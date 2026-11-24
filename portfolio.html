@@ -1,0 +1,712 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ポートフォリオ｜水瀬みつき</title>
+<meta name="description" content="水瀬みつきのポートフォリオ。歌ってみた・MV・MIXの作品と、ご依頼いただいた作品をまとめています。">
+
+<!--FONTS-->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Dela+Gothic+One&family=Shippori+Mincho:wght@500&family=Zen+Kaku+Gothic+New:wght@500;700&display=swap" rel="stylesheet">
+<!--/FONTS-->
+
+<style>
+/* =========================================================
+   色と文字の設定（ほかの2ページと同じ）
+   ========================================================= */
+:root{
+  --white:#ffffff;
+  --sky:#C4F3FF;
+  --sky2:#ECFBFF;
+  --ink:#0B1A3A;
+  --pink:#E8609F;
+  --pink2:#FFD6EC;
+  --cyan:#19E3FF;
+  --g1:#2ED8FF;
+  --g2:#8FA8FF;
+  --g3:#FF6FB5;
+  --grad:linear-gradient(120deg,var(--g1),var(--g2) 50%,var(--g3));
+  --grad-soft:linear-gradient(120deg,#C8F4FF,#E4E1FF 50%,#FFD3EA);
+  --display:"Dela Gothic One","Hiragino Kaku Gothic StdN","Yu Gothic",sans-serif;
+  --body:"Zen Kaku Gothic New","Hiragino Kaku Gothic ProN","Yu Gothic",sans-serif;
+  --mincho:"Shippori Mincho","Hiragino Mincho ProN","Yu Mincho",serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:var(--body);font-weight:500;color:var(--ink);background:var(--white);line-height:1.8;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+a{color:inherit}
+p,li,dt,h3{word-break:auto-phrase;line-break:strict}
+img,svg,canvas,iframe{display:block;max-width:100%}
+.inner{width:min(1080px,100% - 40px);margin-inline:auto}
+:focus-visible{outline:3px solid var(--pink);outline-offset:3px}
+button{font-family:inherit;color:inherit}
+@keyframes gradMove{0%,100%{background-position:0% 50%}50%{background-position:100% 50%}}
+@keyframes spin{to{transform:rotate(360deg)}}
+@keyframes float{50%{transform:translateY(-16px) rotate(8deg)}}
+@keyframes blink{50%{transform:scale(.5);opacity:.4}}
+@keyframes wig{0%,80%,100%{transform:rotate(3deg)}90%{transform:rotate(-6deg) scale(1.08)}}
+@keyframes eq{0%,100%{transform:scaleY(.25)}50%{transform:scaleY(1)}}
+
+.kari{display:inline-block;font-family:var(--body);font-weight:700;font-size:11px;line-height:1.5;background:var(--pink2);color:var(--ink);border:1.5px solid var(--ink);border-radius:4px;padding:0 5px;margin-left:6px;vertical-align:middle;letter-spacing:.05em;white-space:nowrap;-webkit-text-fill-color:var(--ink)}
+.trial{background:linear-gradient(90deg,#0B1A3A,#2B2A6E);color:var(--white);font-size:12px;text-align:center;padding:5px 10px}
+#bar{position:fixed;left:0;top:0;height:4px;width:100%;background:var(--grad);transform-origin:left;transform:scaleX(0);z-index:60}
+
+/* ---------- ナビ（3ページ共通） ---------- */
+header{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.82);backdrop-filter:blur(10px);border-bottom:2.5px solid var(--ink)}
+.nav{display:flex;align-items:center;justify-content:space-between;gap:8px;height:54px}
+.logo{font-family:var(--display);font-weight:400;font-size:15px;text-decoration:none;white-space:nowrap}
+.nav ul{display:flex;list-style:none;gap:4px}
+.nav li a{display:block;font-weight:700;font-size:12.5px;text-decoration:none;padding:6px 9px;border-radius:999px;transition:background .2s,transform .2s;white-space:nowrap}
+.nav li a:hover{background:var(--sky);transform:translateY(-2px)}
+.nav li a[aria-current]{background:var(--ink);color:var(--white)}
+.nav-r{display:flex;align-items:center;gap:6px}
+.hchip{display:inline-flex;align-items:center;gap:6px;font-size:11.5px;font-weight:700;text-decoration:none;border:2px solid var(--ink);border-radius:999px;padding:2px 9px;background:var(--white);white-space:nowrap}
+.hchip i{width:9px;height:9px;border-radius:50%;background:var(--g3);animation:blink 1.2s ease-in-out infinite}
+@media(max-width:420px){.logo{font-size:13px}.nav li a{padding:6px 7px;font-size:12px}}
+.burger{width:42px;height:38px;border:2.5px solid var(--ink);border-radius:12px;background:var(--white);box-shadow:3px 3px 0 var(--ink);display:grid;place-content:center;gap:4px;cursor:pointer;transition:transform .15s}
+.burger:active{transform:translate(2px,2px);box-shadow:1px 1px 0 var(--ink)}
+.burger span{display:block;width:18px;height:2.5px;background:var(--ink);border-radius:2px;transition:transform .3s,opacity .3s}
+.burger[aria-expanded="true"] span:nth-child(1){transform:translateY(6.5px) rotate(45deg)}
+.burger[aria-expanded="true"] span:nth-child(2){opacity:0}
+.burger[aria-expanded="true"] span:nth-child(3){transform:translateY(-6.5px) rotate(-45deg)}
+@media(max-width:640px){.pages{display:none}}
+.menu{position:fixed;inset:0;z-index:80}
+.menu[hidden]{display:none}
+.menu-bg{position:absolute;inset:0;background:rgba(11,26,58,.45);backdrop-filter:blur(3px);animation:fadeIn .3s both}
+@keyframes fadeIn{from{opacity:0}}
+.menu-panel{position:absolute;right:0;top:0;bottom:0;width:min(380px,88vw);background-color:#F3F6FF;border-left:2.5px solid var(--ink);padding:70px 22px 30px;overflow-y:auto;animation:slideIn .45s cubic-bezier(.2,1.2,.3,1) both;
+  background-image:radial-gradient(rgba(11,26,58,.08) 1.4px,transparent 1.6px);background-size:16px 16px}
+@keyframes slideIn{from{transform:translateX(100%)}}
+.menu-close{position:absolute;right:16px;top:14px;width:42px;height:42px;border-radius:50%;border:2.5px solid var(--ink);background:var(--white);font-size:24px;line-height:1;font-weight:700;color:var(--ink);box-shadow:3px 3px 0 var(--ink);cursor:pointer}
+.menu-close:hover{background:var(--pink2)}
+.menu-h{font-size:12px;font-weight:700;margin:4px 0 8px}
+.menu-list{list-style:none;display:grid;gap:7px;margin-bottom:20px}
+.menu-list li{animation:itemIn .5s cubic-bezier(.2,1.4,.4,1) both;animation-delay:calc(var(--i)*45ms + 120ms)}
+@keyframes itemIn{from{opacity:0;transform:translateX(40px)}}
+.menu-list a{display:flex;align-items:baseline;gap:12px;text-decoration:none;background:var(--white);border:2.5px solid var(--ink);border-radius:14px;padding:8px 14px;transition:transform .15s,box-shadow .15s}
+.menu-list a:hover{transform:translate(-2px,-2px);box-shadow:4px 4px 0 var(--pink)}
+.menu-list a.here{background:var(--sky)}
+.m-en{font-family:var(--display);font-size:20px;min-width:5.6em;background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+.m-jp{font-size:13px;font-weight:700}
+.menu-pages{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:18px}
+.menu-pages a{font-weight:700;font-size:13.5px;text-decoration:none;border:2px solid var(--ink);border-radius:999px;padding:4px 12px;background:var(--white)}
+.menu-pages a[aria-current]{background:var(--ink);color:var(--white)}
+.menu-x{width:100%;justify-content:center}
+section[id]{scroll-margin-top:62px}
+
+/* ---------- ボタン ---------- */
+.btns{display:flex;flex-wrap:wrap;gap:12px;margin:20px 0 0}
+.btn{display:inline-flex;align-items:center;gap:8px;font-weight:700;font-size:16px;text-decoration:none;color:var(--ink);background:var(--grad);background-size:200% 100%;animation:gradMove 5s ease infinite;border:2.5px solid var(--ink);border-radius:999px;padding:12px 24px;box-shadow:5px 5px 0 var(--ink);transition:transform .15s,box-shadow .15s;cursor:pointer}
+.btn:hover{transform:translate(-2px,-2px);box-shadow:8px 8px 0 var(--ink)}
+.btn:active{transform:translate(4px,4px);box-shadow:1px 1px 0 var(--ink)}
+.btn.sub{background:var(--white);animation:none}
+.btn .arw{display:inline-block;animation:arw 1s ease-in-out infinite}
+@keyframes arw{50%{transform:translateX(5px)}}
+
+/* ---------- ヒーロー ---------- */
+.hero{position:relative;background:linear-gradient(120deg,#A9EEFF,#D9D6FF 35%,#FFC3E1 65%,#A9EEFF);background-size:300% 300%;animation:gradMove 14s ease infinite;padding:34px 0 0;overflow:hidden}
+.hero::before{content:"";position:absolute;inset:0;background-image:linear-gradient(rgba(11,26,58,.06) 1px,transparent 1px),linear-gradient(90deg,rgba(11,26,58,.06) 1px,transparent 1px);background-size:36px 36px;mask-image:linear-gradient(#000,transparent 90%);-webkit-mask-image:linear-gradient(#000,transparent 90%);animation:grid 14s linear infinite}
+@keyframes grid{to{background-position:36px 36px}}
+.hero .inner{position:relative}
+.status{display:inline-flex;align-items:center;gap:8px;font-weight:700;font-size:13px;background:var(--white);border:2.5px solid var(--ink);border-radius:999px;padding:3px 12px;box-shadow:3px 3px 0 var(--ink)}
+.status i{width:10px;height:10px;border-radius:50%;background:var(--g3);animation:blink 1.2s ease-in-out infinite}
+h1{font-family:var(--display);font-weight:400;line-height:1;letter-spacing:-.02em;font-size:clamp(70px,25vw,190px);margin:18px 0 0}
+h1 .line{display:block;white-space:nowrap}
+h1 .l3{font-size:1.15em;color:var(--white);-webkit-text-stroke:.035em var(--ink);text-shadow:.06em .06em 0 var(--g3);paint-order:stroke fill;margin-top:.04em}
+@media(min-width:900px){h1{font-size:min(15vw,170px)}}
+.ch{display:inline-block;animation:pop .8s cubic-bezier(.2,1.5,.4,1) both;animation-delay:calc(var(--i)*70ms + 150ms)}
+@keyframes pop{0%{transform:translateY(.9em) rotate(14deg) scale(.6);opacity:0}100%{transform:none;opacity:1}}
+h1 .l3 .ch:last-child{animation:pop .8s cubic-bezier(.2,1.5,.4,1) both,bikkuri 1.6s 1.4s ease-in-out infinite;animation-delay:calc(var(--i)*70ms + 150ms),1.4s;transform-origin:50% 90%}
+@keyframes bikkuri{0%,60%,100%{transform:none}70%{transform:rotate(-14deg) translateY(-.06em)}80%{transform:rotate(10deg)}90%{transform:rotate(-4deg)}}
+.ch:hover{color:var(--cyan)}
+.lead{max-width:30em;font-size:15.5px;margin:22px 0 0;font-weight:700}
+.hero-sub{font-family:var(--display);font-size:clamp(14px,2.6vw,20px);letter-spacing:.08em;margin-top:10px;background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent;display:inline-block}
+
+/* ヒーローの大きなレコード */
+.hero-vinyl{position:absolute;right:-60px;top:70px;width:clamp(180px,34vw,400px);aspect-ratio:1;pointer-events:none;opacity:.95}
+.hero-vinyl .disc{width:100%;height:100%;animation:spin 6s linear infinite}
+@media(max-width:640px){.hero-vinyl{right:-70px;top:120px;opacity:.55}}
+.deco{position:absolute;pointer-events:none;will-change:transform}
+.deco>*{animation:float 6s ease-in-out infinite}
+.d1{left:52%;top:6%;width:clamp(36px,7vw,80px)}
+.d2{left:46%;top:44%;width:clamp(22px,4vw,44px)}.d2>*{animation-duration:4.5s;animation-delay:-2s}
+.d3{right:30%;top:3%;width:clamp(18px,3vw,32px)}.d3>*{animation-duration:5s;animation-delay:-1s}
+
+/* レコード共通 */
+.disc{border-radius:50%;border:2.5px solid var(--ink);position:relative;
+  background:radial-gradient(circle,transparent 0 30%,rgba(255,255,255,.08) 30.5% 31%,transparent 31.5%),
+  repeating-radial-gradient(circle,#1a2a52 0 2px,#0B1A3A 2px 4px);
+  box-shadow:6px 6px 0 var(--ink)}
+.disc::before{content:"";position:absolute;inset:0;border-radius:50%;background:conic-gradient(from 30deg,transparent 0 12%,rgba(255,255,255,.22) 16%,transparent 22% 62%,rgba(255,255,255,.16) 66%,transparent 72%)}
+.disc::after{content:"";position:absolute;left:50%;top:50%;width:34%;height:34%;margin:-17% 0 0 -17%;border-radius:50%;background:var(--grad);border:2.5px solid var(--ink);
+  box-shadow:inset 0 0 0 calc(var(--hole,6px)) transparent}
+.disc .hole{position:absolute;left:50%;top:50%;width:5%;height:5%;margin:-2.5% 0 0 -2.5%;border-radius:50%;background:var(--white);border:2px solid var(--ink);z-index:2}
+
+/* 流れる帯 */
+.bands{position:relative;margin-top:40px;height:120px}
+.band{position:absolute;left:-5%;width:110%;white-space:nowrap;overflow:hidden;font-family:var(--display);font-weight:400;border-block:2.5px solid var(--ink);padding:6px 0;font-size:clamp(17px,3.4vw,26px)}
+.band span{display:inline-block;animation:run 22s linear infinite}
+.band.b1{top:14px;background:var(--grad);background-size:200% 100%;animation:gradMove 8s ease infinite;transform:rotate(-3deg)}
+.band.b2{top:52px;background:var(--grad-soft);transform:rotate(2deg)}
+.band.b2 span{animation-direction:reverse;animation-duration:28s}
+@keyframes run{to{transform:translateX(-50%)}}
+
+/* ---------- 共通：セクション ---------- */
+section{padding:72px 0;position:relative}
+.sec-h{margin-bottom:30px}
+.sec-h .en{font-family:var(--display);font-weight:400;font-size:clamp(40px,10vw,100px);line-height:1;letter-spacing:-.01em;display:block;overflow:hidden;padding-bottom:.08em}
+.sec-h .en .ch{background:var(--grad);background-size:200% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;animation:gradMove 6s ease infinite;transform:translateY(110%);transition:transform .7s cubic-bezier(.2,1.2,.3,1);transition-delay:calc(var(--i)*45ms)}
+.on .sec-h .en .ch,.sec-h.on .en .ch{transform:none}
+#player .sec-h .en{font-size:clamp(28px,8.4vw,96px);white-space:nowrap}
+.sec-h .jp{display:inline-block;font-weight:700;font-size:15px;background:var(--ink);color:var(--white);padding:1px 12px;border-radius:999px;margin-top:8px}
+.rv{opacity:0;transform:translateY(64px) scale(.93);filter:blur(6px);transition:opacity .8s ease,transform 1s cubic-bezier(.2,1.35,.35,1),filter .8s ease;transition-delay:var(--d,0ms)}
+.rv.on{opacity:1;transform:none;filter:none}
+.note{font-size:13px;margin-top:16px}
+
+/* ---------- NOW PLAYING（プレイヤー） ---------- */
+.np{background:var(--white);overflow:hidden}
+.np-glow{position:absolute;width:60vw;max-width:700px;aspect-ratio:1;border-radius:50%;left:50%;top:50%;transform:translate(-50%,-50%) scale(.8);background:radial-gradient(circle,rgba(46,216,255,.35),rgba(255,111,181,.25) 45%,transparent 70%);filter:blur(20px);opacity:.4;transition:opacity .6s;pointer-events:none}
+.np.playing .np-glow{opacity:1;animation:pulse .9s ease-in-out infinite alternate}
+@keyframes pulse{from{transform:translate(-50%,-50%) scale(.85)}to{transform:translate(-50%,-50%) scale(1.05)}}
+.player{position:relative;display:grid;gap:22px;grid-template-columns:1fr;border:2.5px solid var(--ink);border-radius:26px;background:rgba(255,255,255,.85);backdrop-filter:blur(6px);box-shadow:8px 8px 0 var(--g3);padding:22px}
+@media(min-width:800px){.player{grid-template-columns:minmax(260px,.85fr) 1.15fr;padding:30px;align-items:center}}
+.deck{position:relative;width:min(100%,340px);margin-inline:auto;aspect-ratio:1}
+.deck .disc{position:absolute;inset:6% 10% 10% 2%;animation:spin 3.2s linear infinite;animation-play-state:paused}
+.player.playing .deck .disc{animation-play-state:running}
+.deck .disc::after{background:var(--lab,var(--grad))}
+.arm{position:absolute;right:2%;top:2%;width:44%;height:58%;transform-origin:85% 12%;transform:rotate(-28deg);transition:transform .7s cubic-bezier(.3,1.5,.4,1);z-index:3}
+.player.playing .arm{transform:rotate(-2deg)}
+.arm svg{width:100%;height:100%;overflow:visible}
+.deck .notes{position:absolute;inset:0;pointer-events:none}
+.deck .notes span{position:absolute;font-size:22px;color:var(--g3);opacity:0;font-weight:700}
+.player.playing .deck .notes span{animation:noteUp 2.4s ease-out infinite}
+.deck .notes span:nth-child(1){left:12%;top:40%}
+.deck .notes span:nth-child(2){left:70%;top:55%;color:var(--g1);animation-delay:.8s!important}
+.deck .notes span:nth-child(3){left:40%;top:70%;color:var(--g2);animation-delay:1.6s!important}
+@keyframes noteUp{0%{opacity:0;transform:translateY(0) scale(.6)}20%{opacity:1}100%{opacity:0;transform:translateY(-90px) rotate(20deg) scale(1.1)}}
+
+.info .np-tag{display:inline-flex;align-items:center;gap:8px;font-family:var(--display);font-size:13px;letter-spacing:.12em}
+.info .np-tag i{width:10px;height:10px;border-radius:50%;background:#9AA3B5}
+.player.playing .info .np-tag i{background:var(--g3);animation:blink 1s ease-in-out infinite}
+.np-type{display:inline-block;font-size:12px;font-weight:700;border:2px solid var(--ink);border-radius:999px;padding:0 10px;margin:10px 6px 0 0;background:var(--sky)}
+.np-owner{display:inline-block;font-size:12px;font-weight:700;border:2px solid var(--ink);border-radius:999px;padding:0 10px;background:var(--pink2)}
+.np-title{font-family:var(--display);font-weight:400;font-size:clamp(28px,5.5vw,44px);line-height:1.2;margin-top:8px}
+.np-title.swap{animation:swapIn .6s cubic-bezier(.2,1.5,.4,1) both}
+@keyframes swapIn{from{opacity:0;transform:translateY(20px) skewX(-10deg)}}
+.np-sub{font-size:14px;font-weight:700}
+.wavebox{display:flex;align-items:center;gap:3px;height:56px;margin:14px 0 6px}
+.wavebox i{flex:1;height:var(--h);background:var(--grad);background-size:2000% 100%;background-position:calc(var(--n)*3.3%) 0;border-radius:3px;transform-origin:center;transform:scaleY(.35);transition:transform .4s}
+.player.playing .wavebox i{animation:eq .8s ease-in-out infinite;animation-delay:calc(var(--n)*-47ms)}
+.lyric{height:46px;display:grid;place-items:center start;font-family:var(--mincho);font-size:clamp(18px,3.6vw,24px);letter-spacing:.2em;overflow:hidden;border-block:2px dashed rgba(11,26,58,.2)}
+.lyric span{display:inline-block;animation:lyr .6s cubic-bezier(.2,1.5,.4,1) both}
+@keyframes lyr{from{opacity:0;transform:translateY(100%);filter:blur(4px)}}
+.prog{position:relative;height:8px;border:2px solid var(--ink);border-radius:9px;background:var(--sky2);overflow:hidden;margin-top:14px}
+.prog i{position:absolute;inset:0;background:var(--grad);transform-origin:left;transform:scaleX(0);animation:prog 40s linear infinite;animation-play-state:paused}
+.player.playing .prog i{animation-play-state:running}
+@keyframes prog{to{transform:scaleX(1)}}
+.ctrl{display:flex;align-items:center;gap:12px;margin-top:16px;flex-wrap:wrap}
+.cbtn{width:48px;height:48px;border-radius:50%;border:2.5px solid var(--ink);background:var(--white);font-size:17px;font-weight:700;box-shadow:3px 3px 0 var(--ink);cursor:pointer;transition:transform .15s}
+.cbtn:hover{transform:translate(-1px,-1px)}
+.cbtn:active{transform:translate(2px,2px);box-shadow:1px 1px 0 var(--ink)}
+.cbtn.play{width:66px;height:66px;font-size:24px;background:var(--grad);background-size:200% 100%;animation:gradMove 4s ease infinite;color:var(--white);-webkit-text-stroke:1px var(--ink)}
+.yt-link{font-size:13px;font-weight:700;margin-left:auto}
+.screen{margin-top:16px;border:2.5px solid var(--ink);border-radius:16px;overflow:hidden;aspect-ratio:16/9;background:#071433;display:grid;place-items:center;color:var(--white);font-size:13.5px;font-weight:700;text-align:center;padding:10px}
+.screen[hidden]{display:none}
+.screen iframe{width:100%;height:100%;border:0}
+
+/* ---------- WORKS ---------- */
+.works{background:linear-gradient(180deg,#E9FBFF,#FFF0F8);border-block:2.5px solid var(--ink)}
+.tabs{position:relative;display:flex;gap:6px;background:var(--white);border:2.5px solid var(--ink);border-radius:999px;padding:5px;width:max-content;max-width:100%;box-shadow:5px 5px 0 var(--ink);margin-bottom:34px}
+.tab{position:relative;z-index:1;border:0;background:none;font-weight:700;font-size:clamp(13px,3.4vw,16px);padding:8px clamp(12px,3.6vw,24px);border-radius:999px;cursor:pointer;white-space:nowrap;transition:color .3s}
+.tab[aria-selected="true"]{color:var(--white)}
+.tab small{font-family:var(--display);font-size:.8em;margin-left:4px}
+.tab-ink{position:absolute;top:5px;bottom:5px;left:0;width:0;border-radius:999px;background:var(--grad);background-size:200% 100%;animation:gradMove 5s ease infinite;border:2px solid var(--ink);transition:left .45s cubic-bezier(.3,1.4,.4,1),width .45s cubic-bezier(.3,1.4,.4,1)}
+.group{margin-bottom:40px}
+.group:last-child{margin-bottom:0}
+.g-head{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap;margin-bottom:14px}
+.g-en{font-family:var(--display);font-size:clamp(24px,5vw,36px);line-height:1}
+.g-jp{font-weight:700;font-size:14px;border:2px solid var(--ink);border-radius:999px;padding:0 10px;background:var(--white)}
+.g-head.client .g-en{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+.grid{display:grid;gap:16px;grid-template-columns:1fr 1fr}
+@media(min-width:800px){.grid{grid-template-columns:repeat(3,1fr)}}
+@media(max-width:480px){.grid{grid-template-columns:1fr}}
+.wcard{display:block;width:100%;text-align:left;border:2.5px solid var(--ink);border-radius:16px;overflow:hidden;background:var(--white);cursor:pointer;transition:transform .25s cubic-bezier(.2,1.4,.4,1),box-shadow .25s;animation:cardIn .7s cubic-bezier(.2,1.5,.4,1) both;animation-delay:calc(var(--i)*90ms)}
+@keyframes cardIn{from{opacity:0;transform:translateY(50px) rotate(calc(var(--r)*1deg)) scale(.7)}}
+.wcard:hover{transform:translateY(-6px) rotate(-1.5deg);box-shadow:6px 8px 0 var(--pink)}
+.wcard.now{box-shadow:6px 6px 0 var(--g3)}
+.wthumb{aspect-ratio:16/9;position:relative;display:grid;place-items:center;font-family:var(--display);font-size:clamp(15px,2.4vw,20px);background-size:300% 300%;animation:grad 7s ease infinite;border-bottom:2.5px solid var(--ink);overflow:hidden}
+@keyframes grad{50%{background-position:100% 100%}}
+.t1{background-image:linear-gradient(120deg,var(--g1),#fff,var(--g3))}
+.t2{background-image:linear-gradient(120deg,#0B1A3A,#2E7FC9,var(--cyan));color:var(--white)}
+.t3{background-image:linear-gradient(120deg,var(--g3),#fff,var(--g1))}
+.t4{background-image:linear-gradient(120deg,#12357E,#7AD3FF,#FF9AD1);color:var(--white)}
+.wthumb .mini{position:absolute;left:10px;bottom:-30%;width:38%;aspect-ratio:1;border-radius:50%;background:repeating-radial-gradient(circle,#1a2a52 0 2px,#0B1A3A 2px 4px);border:2px solid var(--ink);transition:transform .5s cubic-bezier(.2,1.4,.4,1);transform:translateY(40%)}
+.wthumb .mini::after{content:"";position:absolute;inset:34%;border-radius:50%;background:var(--grad)}
+.wcard:hover .mini,.wcard.now .mini{transform:translateY(0);animation:spin 3s linear infinite}
+.wthumb .pl{position:absolute;right:10px;bottom:8px;width:34px;height:34px;border-radius:50%;background:var(--white);color:var(--ink);border:2px solid var(--ink);display:grid;place-items:center;font-size:13px;transition:transform .3s}
+.wcard:hover .pl{transform:scale(1.2) rotate(-10deg)}
+.wcard.now .pl{background:var(--g3);color:var(--white)}
+.wmeta{padding:8px 12px 10px}
+.wmeta b{display:block;font-size:14.5px;line-height:1.4}
+.wmeta span{font-size:12px;font-weight:700}
+.empty{border:2.5px dashed var(--ink);border-radius:16px;background:rgba(255,255,255,.7);padding:18px;display:flex;flex-wrap:wrap;align-items:center;gap:12px;justify-content:space-between;animation:cardIn .7s cubic-bezier(.2,1.5,.4,1) both;--r:0}
+.empty p{font-weight:700;font-size:14.5px}
+.empty .btn{font-size:14px;padding:8px 18px}
+
+/* ---------- PROFILE ---------- */
+.prof{display:grid;gap:22px;grid-template-columns:1fr}
+@media(min-width:800px){.prof{grid-template-columns:1fr 1.1fr}}
+.pcard{border:2.5px solid var(--ink);border-radius:22px;background:var(--white);box-shadow:7px 7px 0 var(--g1);padding:22px 20px}
+.pname{font-family:var(--display);font-size:clamp(24px,5vw,32px);line-height:1.2}
+.pname small{display:block;font-family:var(--body);font-weight:700;font-size:12.5px;letter-spacing:.1em;margin-top:4px}
+.pcard p{font-size:14.5px;margin-top:10px}
+.ptags{list-style:none;display:flex;flex-wrap:wrap;gap:6px;margin-top:12px}
+.ptags li{font-size:12px;font-weight:700;border:1.5px solid var(--ink);border-radius:999px;padding:0 9px;background:var(--sky2)}
+.stats{border:2.5px solid var(--ink);border-radius:22px;background:#0B1A3A;color:var(--white);box-shadow:7px 7px 0 var(--g3);padding:20px 20px 22px;
+  background-image:linear-gradient(rgba(255,255,255,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.05) 1px,transparent 1px);background-size:18px 18px}
+.stats h3{font-family:var(--display);font-weight:400;font-size:18px;letter-spacing:.1em;display:flex;justify-content:space-between;align-items:center}
+.stats h3 span{font-family:var(--body);font-size:11px;font-weight:700;border:1.5px solid var(--white);border-radius:999px;padding:0 8px}
+.st-h{font-size:12px;font-weight:700;margin:14px 0 6px;color:var(--sky)}
+.meter{display:grid;grid-template-columns:7.5em 1fr 2.4em;align-items:center;gap:10px;font-size:13.5px;font-weight:700;margin-bottom:8px}
+.mbar{height:14px;border:2px solid var(--white);border-radius:9px;overflow:hidden;background:rgba(255,255,255,.1)}
+.mbar i{display:block;height:100%;width:var(--v);background:var(--grad);transform-origin:left;transform:scaleX(0);transition:transform 1.4s cubic-bezier(.2,1.2,.3,1);transition-delay:calc(var(--n)*120ms + 200ms);
+  background-image:repeating-linear-gradient(90deg,transparent 0 8px,rgba(11,26,58,.25) 8px 10px),var(--grad)}
+.stats.on .mbar i{transform:none}
+.meter em{font-style:normal;font-family:var(--display);font-size:14px;text-align:right;color:var(--cyan)}
+
+/* ---------- REQUEST ---------- */
+.reqs{display:grid;gap:20px;grid-template-columns:1fr}
+@media(min-width:760px){.reqs{grid-template-columns:1fr 1fr}}
+.req{position:relative;display:block;text-decoration:none;border:2.5px solid var(--ink);border-radius:24px;padding:24px 22px 22px;overflow:hidden;background:var(--white);box-shadow:8px 8px 0 var(--ink);transition:transform .25s cubic-bezier(.2,1.4,.4,1),box-shadow .25s;transform-style:preserve-3d}
+.req:hover{box-shadow:12px 12px 0 var(--g3)}
+.req::before{content:"";position:absolute;inset:0;background:var(--grad-soft);opacity:.7;z-index:-1}
+.req .r-en{font-family:var(--display);font-size:clamp(34px,7vw,54px);line-height:1;background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent;display:block}
+.req .r-jp{font-weight:700;font-size:16px;margin-top:6px;display:block}
+.req p{font-size:14px;margin-top:8px}
+.req .go{display:inline-flex;align-items:center;gap:8px;margin-top:14px;font-weight:700;border:2.5px solid var(--ink);border-radius:999px;padding:6px 16px;background:var(--white)}
+.req .go .arw{display:inline-block;animation:arw 1s ease-in-out infinite}
+.req .big-ic{position:absolute;right:-14px;top:-14px;width:110px;height:110px;opacity:.9;animation:spin 12s linear infinite}
+
+/* ---------- CTA ---------- */
+.cta{background:linear-gradient(135deg,#0B1A3A,#2B2A6E 60%,#5A2A6E);color:var(--white);text-align:center;overflow:hidden}
+.cta h2{font-family:var(--display);font-weight:400;font-size:clamp(34px,9vw,84px);line-height:1.15}
+.cta h2 em{font-style:normal;display:inline-block;animation:wig 2.4s ease-in-out infinite;background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+.cta p{margin:14px auto 0;max-width:32em;font-size:15px}
+.cta .btns{justify-content:center;margin-top:24px}
+.cta .btn{box-shadow:5px 5px 0 var(--white)}
+.cta .btn:hover{box-shadow:8px 8px 0 var(--white)}
+.cta .ring{position:absolute;border:2.5px solid var(--cyan);border-radius:50%;opacity:.35;animation:ring 6s linear infinite;left:50%;top:50%;width:200px;height:200px;margin:-100px}
+.cta .ring:nth-child(2){animation-delay:-2s}.cta .ring:nth-child(3){animation-delay:-4s}
+@keyframes ring{from{transform:scale(.4);opacity:.5}to{transform:scale(6);opacity:0}}
+.cta .inner{position:relative}
+
+footer{background:var(--white);border-top:2.5px solid var(--ink);padding:22px 0 80px;font-size:13px;text-align:center}
+footer nav a{font-weight:700;margin:0 8px}
+
+/* マウスについてくる音符 */
+.trail{position:fixed;left:0;top:0;pointer-events:none;z-index:90;font-weight:700;font-size:18px;animation:trail 1s ease-out forwards}
+@keyframes trail{from{opacity:1;transform:translate(var(--x),var(--y)) scale(.6)}to{opacity:0;transform:translate(calc(var(--x) + var(--dx)),calc(var(--y) - 50px)) rotate(25deg) scale(1.2)}}
+
+#motion{position:fixed;right:12px;bottom:12px;z-index:70;font-weight:700;font-size:12px;color:var(--ink);background:var(--white);border:2.5px solid var(--ink);border-radius:999px;padding:6px 12px;box-shadow:3px 3px 0 var(--ink);cursor:pointer}
+
+/* 動きを止めたとき／端末で「動きを減らす」設定のとき */
+html.still *,html.still *::before,html.still *::after{animation-play-state:paused!important}
+html.still{scroll-behavior:auto}
+/* 一度だけ出てくる動きは「最初から表示」にする（止まったまま見えなくなるのを防ぐ） */
+html.still .ch,html.still .menu-bg,html.still .menu-panel,html.still .menu-list li,
+html.still .wcard,html.still .empty,html.still .np-title.swap,html.still .lyric span,html.still .deck .notes span{animation:none!important}
+html.still .deck .notes span{opacity:0}
+html.still .mbar i{transition:none}
+html.still .tab-ink{transition:none}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  .rv{opacity:1;transform:none;filter:none;transition:none}
+  .sec-h .en .ch{transform:none;transition:none}
+  .mbar i{transform:none;transition:none}
+}
+</style>
+</head>
+<body>
+
+<div id="bar"></div>
+<div class="trial">これは試作ページです。<b>「仮」「準備中」</b>のしるしが付いた所は、まだ決まっていない内容です。</div>
+
+<!-- ============ ナビ：3ページで同じものを使います ============ -->
+<header>
+  <div class="inner nav">
+    <div style="display:flex;align-items:center;gap:8px"><a class="logo" href="index.html">水瀬みつき</a><a class="hchip" href="#request"><i></i><span>依頼受付中</span></a></div>
+    <div class="nav-r">
+      <nav aria-label="ページ切り替え" class="pages">
+        <ul>
+          <li><a href="movie.html">動画依頼</a></li>
+          <li><a href="mix.html">MIX依頼</a></li>
+          <li><a href="portfolio.html" aria-current="page">ポートフォリオ</a></li>
+        </ul>
+      </nav>
+      <button class="burger" id="burger" type="button" aria-expanded="false" aria-controls="menu" aria-label="メニューを開く"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+</header>
+
+<!-- ============ ハンバーガーメニュー ============ -->
+<div class="menu" id="menu" hidden>
+  <div class="menu-bg" data-close></div>
+  <div class="menu-panel" role="dialog" aria-modal="true" aria-label="メニュー">
+    <button class="menu-close" type="button" data-close aria-label="メニューを閉じる">×</button>
+    <p class="menu-h">このページの中</p>
+    <ol class="menu-list">
+      <li><a href="#player"><span class="m-en">PLAYER</span><span class="m-jp">いま再生中</span></a></li>
+      <li><a href="#works"><span class="m-en">WORKS</span><span class="m-jp">作品一覧</span></a></li>
+      <li><a href="#profile"><span class="m-en">PROFILE</span><span class="m-jp">プロフィール</span></a></li>
+      <li><a href="#request"><span class="m-en">REQUEST</span><span class="m-jp">ご依頼はこちら</span></a></li>
+      <li><a href="#contact"><span class="m-en">CONTACT</span><span class="m-jp">ご相談</span></a></li>
+    </ol>
+    <p class="menu-h">ほかのページ</p>
+    <div class="menu-pages">
+      <a href="movie.html">動画依頼</a><a href="mix.html">MIX依頼</a><a href="portfolio.html" aria-current="page">ポートフォリオ</a>
+    </div>
+    <a class="btn menu-x" href="https://x.com/minasemitsuki" target="_blank" rel="noopener">Xで相談する <span class="arw">→</span></a>
+  </div>
+</div>
+
+<main>
+<!-- ============ ヒーロー ============ -->
+<section class="hero" style="padding-bottom:0">
+  <div class="hero-vinyl" data-para=".2" aria-hidden="true"><div class="disc"><span class="hole"></span></div></div>
+  <div class="deco d1" data-para=".35"><svg viewBox="0 0 100 100"><path d="M50 2 61 39 98 50 61 61 50 98 39 61 2 50 39 39Z" fill="#19E3FF" stroke="#0B1A3A" stroke-width="4" stroke-linejoin="round"/></svg></div>
+  <div class="deco d2" data-para=".6"><svg viewBox="0 0 100 100"><circle cx="50" cy="50" r="44" fill="#E8609F" stroke="#0B1A3A" stroke-width="6"/></svg></div>
+  <div class="deco d3" data-para=".8"><svg viewBox="0 0 100 100"><path d="M50 2 61 39 98 50 61 61 50 98 39 61 2 50 39 39Z" fill="#FFD6EC" stroke="#0B1A3A" stroke-width="6" stroke-linejoin="round"/></svg></div>
+
+  <div class="inner">
+    <p class="status"><i></i><span>PORTFOLIO ／ 作品集</span></p>
+    <h1 aria-label="水瀬の作品">
+      <span class="line l1" data-split aria-hidden="true">水瀬の</span>
+      <span class="line l3" data-split aria-hidden="true">作品</span>
+    </h1>
+    <span class="hero-sub">COVER ✦ MUSIC VIDEO ✦ MIX</span>
+    <p class="lead">歌ってみた・MV・MIXの作品をまとめました。<br>気になる作品を選んで、プレイヤーで再生してみてください。</p>
+    <div class="btns">
+      <a class="btn" href="#player">作品を再生する <span class="arw">→</span></a>
+      <a class="btn sub" href="#request">ご依頼はこちら</a>
+    </div>
+  </div>
+
+  <div class="bands" aria-hidden="true">
+    <div class="band b1"><span>水瀬の作品 ✦ COVER ✦ MUSIC VIDEO ✦ MIX ✦ NOW PLAYING ✦ 水瀬の作品 ✦ COVER ✦ MUSIC VIDEO ✦ MIX ✦ NOW PLAYING ✦ 水瀬の作品 ✦ COVER ✦ MUSIC VIDEO ✦ MIX ✦ NOW PLAYING ✦ 水瀬の作品 ✦ COVER ✦ MUSIC VIDEO ✦ MIX ✦ NOW PLAYING ✦ </span></div>
+    <div class="band b2"><span>MY WORKS ● FOR CLIENTS ● 歌ってみた ● MV ● MIX ● MY WORKS ● FOR CLIENTS ● 歌ってみた ● MV ● MIX ● MY WORKS ● FOR CLIENTS ● 歌ってみた ● MV ● MIX ● MY WORKS ● FOR CLIENTS ● 歌ってみた ● MV ● MIX ● </span></div>
+  </div>
+</section>
+
+<!-- ============ プレイヤー ============ -->
+<section class="np" id="player">
+  <div class="np-glow" aria-hidden="true"></div>
+  <div class="inner">
+    <div class="sec-h rv"><span class="en" data-split>NOW PLAYING</span><span class="jp">いま再生中</span></div>
+    <div class="player rv" id="playerBox">
+      <div class="deck" aria-hidden="true">
+        <div class="disc" id="disc"><span class="hole"></span></div>
+        <div class="arm"><svg viewBox="0 0 100 140"><circle cx="85" cy="16" r="12" fill="#fff" stroke="#0B1A3A" stroke-width="4"/><path d="M85 16 L70 100 L48 128" fill="none" stroke="#0B1A3A" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/><rect x="34" y="118" width="22" height="16" rx="3" transform="rotate(35 45 126)" fill="#FF6FB5" stroke="#0B1A3A" stroke-width="4"/></svg></div>
+        <div class="notes"><span>♪</span><span>♫</span><span>♪</span></div>
+      </div>
+      <div class="info">
+        <p class="np-tag"><i></i><span id="npState">STAND BY</span></p>
+        <div><span class="np-type" id="npType"></span><span class="np-owner" id="npOwner"></span></div>
+        <h3 class="np-title" id="npTitle" aria-live="polite"></h3>
+        <p class="np-sub" id="npSub"></p>
+        <div class="wavebox" id="wave" aria-hidden="true"></div>
+        <div class="lyric" id="lyric" aria-hidden="true"></div>
+        <div class="prog" aria-hidden="true"><i id="progI"></i></div>
+        <div class="ctrl">
+          <button class="cbtn" id="pPrev" type="button" aria-label="前の作品">⏮</button>
+          <button class="cbtn play" id="pPlay" type="button" aria-label="再生">▶</button>
+          <button class="cbtn" id="pNext" type="button" aria-label="次の作品">⏭</button>
+          <a class="yt-link" id="ytLink" href="#" target="_blank" rel="noopener" hidden>YouTubeで見る ↗</a>
+        </div>
+        <div class="screen" id="screen" hidden></div>
+      </div>
+    </div>
+    <!-- ★作品を投稿したら、ページ下の WORKS の設定にYouTubeのURLを入れると、ここで再生できます -->
+    <p class="note rv">※作品は準備中です。公開した作品から、順番にここで再生できるようになります。</p>
+  </div>
+</section>
+
+<!-- ============ 作品一覧 ============ -->
+<section class="works" id="works">
+  <div class="inner">
+    <div class="sec-h rv"><span class="en" data-split>WORKS</span><span class="jp">作品一覧</span></div>
+    <div class="tabs rv" role="tablist" aria-label="作品の種類" id="tabs">
+      <span class="tab-ink" id="tabInk" aria-hidden="true"></span>
+      <button class="tab" role="tab" type="button" data-type="cover" aria-selected="true">歌ってみた<small id="cnt-cover"></small></button>
+      <button class="tab" role="tab" type="button" data-type="mv" aria-selected="false">MV<small id="cnt-mv"></small></button>
+      <button class="tab" role="tab" type="button" data-type="mix" aria-selected="false">MIX<small id="cnt-mix"></small></button>
+    </div>
+    <div role="tabpanel">
+      <div class="group">
+        <div class="g-head"><span class="g-en">MY WORKS</span><span class="g-jp">水瀬の作品</span></div>
+        <div class="grid" id="gSelf"></div>
+      </div>
+      <div class="group">
+        <div class="g-head client"><span class="g-en">FOR CLIENTS</span><span class="g-jp">ご依頼いただいた作品</span></div>
+        <div class="grid" id="gClient"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ プロフィール ============ -->
+<section id="profile">
+  <div class="inner">
+    <div class="sec-h rv"><span class="en" data-split>PROFILE</span><span class="jp">プロフィール</span></div>
+    <div class="prof">
+      <div class="pcard rv">
+        <p class="pname">水瀬みつき<small>SINGER ／ MV CREATOR ／ MIX</small></p>
+        <p>歌ってみたを中心に活動しています。主に自分の歌をMIXし、MVも自分でつくっています。自分の作品を一から形にしていく時間が、いちばん楽しいひとときです。その経験をいかして、MVとMIXのご依頼もお受けしています。</p>
+        <ul class="ptags"><li>歌ってみた</li><li>MV制作（ポップ〜しっとり）</li><li>MIX・ハモリ作成</li></ul>
+      </div>
+      <div class="stats rv" id="stats">
+        <h3>STATUS <span>LEVEL</span></h3>
+        <p class="st-h">得意なジャンル</p>
+        <div class="meter"><span>かわいい系</span><span class="mbar"><i style="--v:90%;--n:0"></i></span><em>90</em></div>
+        <div class="meter"><span>元気系</span><span class="mbar"><i style="--v:90%;--n:1"></i></span><em>90</em></div>
+        <div class="meter"><span>バラード</span><span class="mbar"><i style="--v:80%;--n:2"></i></span><em>80</em></div>
+        <p class="st-h">声と歌い方</p>
+        <div class="meter"><span>かわいい声</span><span class="mbar"><i style="--v:90%;--n:3"></i></span><em>90</em></div>
+        <div class="meter"><span>元気さ</span><span class="mbar"><i style="--v:90%;--n:4"></i></span><em>90</em></div>
+        <div class="meter"><span>高音</span><span class="mbar"><i style="--v:85%;--n:5"></i></span><em>85</em></div>
+        <div class="meter"><span>早口</span><span class="mbar"><i style="--v:80%;--n:6"></i></span><em>80</em></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ ご依頼 ============ -->
+<section id="request" style="background:var(--grad-soft);border-block:2.5px solid var(--ink)">
+  <div class="inner">
+    <div class="sec-h rv"><span class="en" data-split>REQUEST</span><span class="jp">ご依頼はこちら</span></div>
+    <div class="reqs">
+      <a class="req rv" href="movie.html" data-tilt>
+        <svg class="big-ic" viewBox="0 0 100 100" aria-hidden="true"><path d="M50 2 61 39 98 50 61 61 50 98 39 61 2 50 39 39Z" fill="#19E3FF" stroke="#0B1A3A" stroke-width="4" stroke-linejoin="round"/></svg>
+        <span class="r-en">MOVIE</span><span class="r-jp">MV制作のご依頼</span>
+        <p>ポップで元気なMVから、しっとり落ち着いたMVまで、幅広くつくります。</p>
+        <span class="go">動画依頼ページへ <span class="arw">→</span></span>
+      </a>
+      <a class="req rv" href="mix.html" data-tilt>
+        <svg class="big-ic" viewBox="0 0 100 100" aria-hidden="true"><circle cx="50" cy="50" r="44" fill="#FF6FB5" stroke="#0B1A3A" stroke-width="5"/><path d="M45 28v30a8 8 0 1 1-5-7.4V28h20v8H45" fill="#fff" stroke="#0B1A3A" stroke-width="4" stroke-linejoin="round"/></svg>
+        <span class="r-en">MIX</span><span class="r-jp">MIXのご依頼</span>
+        <p>ピッチ補正・ハモリ作成・MIXまで、まとめておまかせ。</p>
+        <span class="go">MIX依頼ページへ <span class="arw">→</span></span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ よびかけ ============ -->
+<section class="cta" id="contact">
+  <span class="ring"></span><span class="ring"></span><span class="ring"></span>
+  <div class="inner">
+    <h2 class="rv">作品が<em>気に入ったら</em>、<br>Xでどうぞ。</h2>
+    <p class="rv">ご依頼のご相談はもちろん、作品の感想もうれしいです。</p>
+    <div class="btns rv">
+      <a class="btn" href="https://x.com/minasemitsuki" target="_blank" rel="noopener">Xで相談する <span class="arw">→</span></a>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <nav aria-label="フッター"><a href="movie.html">動画依頼</a><a href="mix.html">MIX依頼</a><a href="portfolio.html">ポートフォリオ</a></nav>
+  <p style="margin-top:8px">© 水瀬みつき</p>
+</footer>
+
+<button id="motion" type="button" aria-pressed="false">動きを止める</button>
+
+<script>
+(function(){
+  /* ================================================================
+     ★作品の設定：ここに1作品ずつ足していきます
+     type  : "cover"=歌ってみた / "mv"=MV / "mix"=MIX
+     owner : "self"=水瀬の作品 / "client"=ご依頼いただいた作品
+     url   : YouTubeのURL（まだなら "" のまま。入れるとプレイヤーで再生できます）
+     color : カードの色 "t1"〜"t4"
+     lyric : プレイヤーに流れる言葉（歌詞の一部や、ひとこと）
+     ================================================================ */
+  var WORKS = [
+    {type:"cover", owner:"self",   title:"SAMPLE SONG 01", sub:"歌ってみた／フル",               url:"", color:"t1", dummy:true, lyric:["きらめく","夜を","こえて","うたえ！"]},
+    {type:"cover", owner:"self",   title:"SAMPLE SONG 02", sub:"歌ってみた／ワンコーラス",       url:"", color:"t3", dummy:true, lyric:["ひかりの","なかで","きみを","よんだ"]},
+    {type:"cover", owner:"self",   title:"SAMPLE SONG 03", sub:"歌ってみた／ショート",           url:"", color:"t2", dummy:true, lyric:["ねえ","きこえる？","このこえ"]},
+    {type:"mv",    owner:"self",   title:"SAMPLE MV 01",   sub:"MV（ポップ系）／自分の歌ってみた", url:"", color:"t4", dummy:true, lyric:["文字が","おどる","リズムに","のって"]},
+    {type:"mv",    owner:"self",   title:"SAMPLE MV 02",   sub:"MV（しっとり系）／自分の歌ってみた", url:"", color:"t2", dummy:true, lyric:["夜明けまで","しずかに","ひかる"]},
+    {type:"mix",   owner:"self",   title:"SAMPLE MIX 01",  sub:"MIX／自分の歌ってみた",           url:"", color:"t1", dummy:true, lyric:["BEFORE","→","AFTER","♪"]},
+    {type:"mv",    owner:"client", title:"CLIENT MV 01",   sub:"MV（元気系）／ショート",         url:"", color:"t3", dummy:true, lyric:["ご依頼","ありがとう","ございました"]},
+    {type:"mix",   owner:"client", title:"CLIENT MIX 01",  sub:"MIX／フル・ハモリあり",            url:"", color:"t4", dummy:true, lyric:["声と","オケが","ひとつに"]}
+  ];
+  var TYPES={cover:"歌ってみた",mv:"MV",mix:"MIX"};
+  var EMPTY={
+    cover:{text:"歌ってみたは、水瀬の作品だけです。MIXのご依頼はこちらから！",href:"mix.html",btn:"MIX依頼ページへ"},
+    mv:{text:"ご依頼作品は、これから増えていきます！",href:"movie.html",btn:"動画依頼ページへ"},
+    mix:{text:"ご依頼作品は、これから増えていきます！",href:"mix.html",btn:"MIX依頼ページへ"}
+  };
+
+  var root=document.documentElement;
+  var reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var still=reduce;
+  if(still) root.classList.add('still');
+
+  /* 1. 文字を1文字ずつに分ける */
+  document.querySelectorAll('[data-split]').forEach(function(el){
+    var t=el.textContent; el.textContent='';
+    Array.from(t).forEach(function(c,i){
+      var s=document.createElement('span'); s.className='ch'; s.style.setProperty('--i',i); s.textContent=c===' '?' ':c; el.appendChild(s);
+    });
+  });
+
+  /* 2. スクロールで見えたら、ふわっと出す */
+  document.querySelectorAll('.rv').forEach(function(el){
+    if(el.style.getPropertyValue('--d')) return;
+    var sib=Array.prototype.filter.call(el.parentNode.children,function(c){return c.classList.contains('rv');});
+    el.style.setProperty('--d',(sib.indexOf(el)*110)+'ms');
+  });
+  var io=new IntersectionObserver(function(es){
+    es.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('on'); io.unobserve(e.target);} });
+  },{threshold:.15});
+  document.querySelectorAll('.rv').forEach(function(el){ io.observe(el); });
+
+  /* 3. スクロール量に合わせて：進みバー・かざりのズレ */
+  var bar=document.getElementById('bar'), decos=document.querySelectorAll('[data-para]'), tick=false;
+  function onScroll(){
+    if(tick) return; tick=true;
+    requestAnimationFrame(function(){
+      tick=false;
+      var y=window.scrollY, max=document.documentElement.scrollHeight-window.innerHeight;
+      bar.style.transform='scaleX('+(max>0?y/max:0)+')';
+      if(!still) decos.forEach(function(d){ d.style.transform='translateY('+(y*parseFloat(d.dataset.para)*-1)+'px) rotate('+(y*.05)+'deg)'; });
+    });
+  }
+  window.addEventListener('scroll',onScroll,{passive:true}); onScroll();
+
+  /* 4. プレイヤー */
+  var box=document.getElementById('playerBox'), np=document.getElementById('player'),
+      tTitle=document.getElementById('npTitle'), tSub=document.getElementById('npSub'), tType=document.getElementById('npType'),
+      tOwner=document.getElementById('npOwner'), tState=document.getElementById('npState'), lyric=document.getElementById('lyric'),
+      playBtn=document.getElementById('pPlay'), screen=document.getElementById('screen'), ytLink=document.getElementById('ytLink'),
+      disc=document.getElementById('disc'), progI=document.getElementById('progI'), wave=document.getElementById('wave');
+  for(var w=0;w<36;w++){ var b=document.createElement('i'); b.style.setProperty('--n',w); b.style.setProperty('--h',(30+Math.round(Math.abs(Math.sin(w*1.7))*70))+'%'); wave.appendChild(b); }
+  var labels={t1:'linear-gradient(120deg,#2ED8FF,#fff,#FF6FB5)',t2:'linear-gradient(120deg,#0B1A3A,#2E7FC9,#19E3FF)',t3:'linear-gradient(120deg,#FF6FB5,#fff,#2ED8FF)',t4:'linear-gradient(120deg,#12357E,#7AD3FF,#FF9AD1)'};
+  var curType='cover', list=[], cur=-1, playing=false, li=0, timer=null;
+
+  function ytId(u){ var m=(u||'').match(/(?:v=|youtu\.be\/|shorts\/|embed\/)([\w-]{11})/); return m?m[1]:''; }
+  function showLyric(){
+    var w=list[cur]; if(!w) return;
+    var words=w.lyric&&w.lyric.length?w.lyric:['♪'];
+    lyric.innerHTML=''; var s=document.createElement('span'); s.textContent=words[li%words.length]; lyric.appendChild(s); li++;
+  }
+  function setPlaying(on){
+    playing=on;
+    box.classList.toggle('playing',on); np.classList.toggle('playing',on);
+    playBtn.textContent=on?'❚❚':'▶'; playBtn.setAttribute('aria-label',on?'一時停止':'再生');
+    tState.textContent=on?'NOW PLAYING':'STAND BY';
+    clearInterval(timer); if(on) timer=setInterval(function(){ if(!still) showLyric(); },1500);
+    var w=list[cur], id=w?ytId(w.url):'';
+    if(on){
+      screen.hidden=false;
+      if(id) screen.innerHTML='<iframe src="https://www.youtube-nocookie.com/embed/'+id+'?autoplay=1&rel=0" title="'+w.title.replace(/"/g,'')+'" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen></iframe>';
+      else screen.textContent='この作品は準備中です。公開まで、もう少しお待ちください！';
+    }else{ screen.innerHTML=''; screen.hidden=true; }
+  }
+  function load(i,autoplay){
+    if(!list.length) return;
+    cur=(i+list.length)%list.length; li=0;
+    var w=list[cur];
+    tTitle.classList.remove('swap'); void tTitle.offsetWidth; tTitle.classList.add('swap');
+    tTitle.innerHTML=''; tTitle.appendChild(document.createTextNode(w.title));
+    if(w.dummy){ var k=document.createElement('span'); k.className='kari'; k.textContent='準備中'; tTitle.appendChild(k); }
+    tSub.textContent=w.sub; tType.textContent=TYPES[w.type]; tOwner.textContent=w.owner==='self'?'水瀬の作品':'ご依頼作品';
+    disc.style.setProperty('--lab',labels[w.color]||labels.t1);
+    var id=ytId(w.url); ytLink.hidden=!id; if(id) ytLink.href='https://www.youtube.com/watch?v='+id;
+    progI.style.animation='none'; void progI.offsetWidth; progI.style.animation='';
+    showLyric();
+    document.querySelectorAll('.wcard').forEach(function(c){ c.classList.toggle('now',+c.dataset.idx===cur); });
+    setPlaying(!!autoplay);
+  }
+  playBtn.addEventListener('click',function(){ setPlaying(!playing); });
+  document.getElementById('pPrev').addEventListener('click',function(){ load(cur-1,playing); });
+  document.getElementById('pNext').addEventListener('click',function(){ load(cur+1,playing); });
+
+  /* 5. タブと作品カード（自分の作品 → ご依頼作品 の順） */
+  ['cover','mv','mix'].forEach(function(t){ document.getElementById('cnt-'+t).textContent=WORKS.filter(function(w){return w.type===t;}).length; });
+  var gSelf=document.getElementById('gSelf'), gClient=document.getElementById('gClient'), tabs=document.querySelectorAll('.tab'), ink=document.getElementById('tabInk');
+  function moveInk(){ var a=document.querySelector('.tab[aria-selected="true"]'); ink.style.left=a.offsetLeft+'px'; ink.style.width=a.offsetWidth+'px'; }
+  function card(w,idx,n){
+    var b=document.createElement('button'); b.type='button'; b.className='wcard'; b.dataset.idx=idx;
+    b.style.setProperty('--i',n); b.style.setProperty('--r',(n%2?8:-8));
+    b.innerHTML='<div class="wthumb '+w.color+'"><span class="mini"></span>'+w.title+'<span class="pl">▶</span></div><div class="wmeta"><b></b><span></span></div>';
+    b.querySelector('b').textContent=w.title; b.querySelector('.wmeta span').textContent=w.sub+(w.dummy?'（準備中）':'');
+    b.setAttribute('aria-label',w.title+'を再生');
+    b.addEventListener('click',function(){ load(idx,true); document.getElementById('player').scrollIntoView({behavior:still?'auto':'smooth'}); });
+    return b;
+  }
+  function render(type){
+    curType=type;
+    var self=WORKS.filter(function(w){return w.type===type&&w.owner==='self';});
+    var client=WORKS.filter(function(w){return w.type===type&&w.owner==='client';});
+    list=self.concat(client);
+    gSelf.innerHTML=''; gClient.innerHTML='';
+    self.forEach(function(w,i){ gSelf.appendChild(card(w,i,i)); });
+    client.forEach(function(w,i){ gClient.appendChild(card(w,self.length+i,self.length+i)); });
+    /* ご依頼作品がまだ少ないうちは、依頼ページへの案内を出す */
+    if(client.length<3){
+      var e=EMPTY[type], d=document.createElement('div'); d.className='empty';
+      d.innerHTML='<p></p><a class="btn" href="'+e.href+'">'+e.btn+' <span class="arw">→</span></a>';
+      d.querySelector('p').textContent=client.length?'ご依頼作品は、これから増えていきます！':e.text;
+      d.style.gridColumn='1 / -1'; gClient.appendChild(d);
+    }
+    if(!self.length){ var s=document.createElement('p'); s.className='note'; s.textContent='準備中です。'; gSelf.appendChild(s); }
+    tabs.forEach(function(t){ t.setAttribute('aria-selected',String(t.dataset.type===type)); });
+    moveInk(); load(0,false);
+  }
+  tabs.forEach(function(t){ t.addEventListener('click',function(){ setPlaying(false); render(t.dataset.type); }); });
+  window.addEventListener('resize',moveInk);
+  render('cover');
+  if(document.fonts&&document.fonts.ready) document.fonts.ready.then(moveInk);
+
+  /* 6. ご依頼カードを、マウスの位置に合わせて少しかたむける */
+  document.querySelectorAll('[data-tilt]').forEach(function(c){
+    c.addEventListener('pointermove',function(e){ if(still||e.pointerType!=='mouse') return; var r=c.getBoundingClientRect(), x=(e.clientX-r.left)/r.width-.5, y=(e.clientY-r.top)/r.height-.5;
+      c.style.transform='perspective(800px) rotateY('+(x*10)+'deg) rotateX('+(-y*10)+'deg) translateY(-4px)'; });
+    c.addEventListener('pointerleave',function(){ c.style.transform=''; });
+  });
+
+  /* 7. マウスについてくる音符（パソコンのみ） */
+  var last=0, marks=['♪','♫','✦','♪'], cols=['#2ED8FF','#8FA8FF','#FF6FB5'];
+  window.addEventListener('pointermove',function(e){
+    if(still||e.pointerType!=='mouse') return;
+    var now=performance.now(); if(now-last<90) return; last=now;
+    var s=document.createElement('span'); s.className='trail'; s.textContent=marks[Math.floor(Math.random()*marks.length)];
+    s.style.color=cols[Math.floor(Math.random()*cols.length)];
+    s.style.setProperty('--x',e.clientX+'px'); s.style.setProperty('--y',e.clientY+'px'); s.style.setProperty('--dx',(Math.random()*40-20)+'px');
+    document.body.appendChild(s); setTimeout(function(){ s.remove(); },1000);
+  });
+
+  /* 8. 動きを止める／動かすボタン */
+  var mb=document.getElementById('motion');
+  function label(){ mb.textContent=still?'動かす':'動きを止める'; mb.setAttribute('aria-pressed',String(still)); }
+  label();
+  mb.addEventListener('click',function(){ still=!still; root.classList.toggle('still',still); label(); });
+
+  /* 9. ハンバーガーメニュー */
+  var burger=document.getElementById('burger'), menu=document.getElementById('menu');
+  menu.querySelectorAll('.menu-list li').forEach(function(li,i){ li.style.setProperty('--i',i); });
+  function openMenu(){ menu.hidden=false; burger.setAttribute('aria-expanded','true'); burger.setAttribute('aria-label','メニューを閉じる'); document.body.style.overflow='hidden';
+    var c=''; document.querySelectorAll('section[id]').forEach(function(sec){ if(sec.getBoundingClientRect().top<120) c=sec.id; });
+    menu.querySelectorAll('.menu-list a').forEach(function(a){ a.classList.toggle('here',a.getAttribute('href')==='#'+c); });
+    menu.querySelector('.menu-list a').focus(); }
+  function closeMenu(){ menu.hidden=true; burger.setAttribute('aria-expanded','false'); burger.setAttribute('aria-label','メニューを開く'); document.body.style.overflow=''; }
+  burger.addEventListener('click',function(){ menu.hidden?openMenu():closeMenu(); });
+  menu.addEventListener('click',function(e){ if(e.target.closest('a')||e.target.hasAttribute('data-close')) closeMenu(); });
+  document.addEventListener('keydown',function(e){ if(e.key==='Escape'&&!menu.hidden){ closeMenu(); burger.focus(); } });
+})();
+</script>
+</body>
+</html>

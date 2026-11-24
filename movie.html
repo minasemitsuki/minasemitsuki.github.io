@@ -1,0 +1,1016 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>動画依頼（MV制作）｜水瀬みつき</title>
+<meta name="description" content="水瀬みつきのMV制作依頼ページ。ポップで元気なMVから、しっとり落ち着いたMVまで、曲に合わせて幅広くつくります。">
+
+<!--FONTS-->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Dela+Gothic+One&family=Shippori+Mincho:wght@500&family=Zen+Kaku+Gothic+New:wght@500;700&display=swap" rel="stylesheet">
+<!--/FONTS-->
+
+<style>
+/* =========================================================
+   色と文字の設定（ここを変えると全体が変わります）
+   ========================================================= */
+:root{
+  --white:#ffffff;
+  --sky:#C4F3FF;      /* うすいシアン（面） */
+  --sky2:#ECFBFF;     /* ごくうすいシアン（地） */
+  --ink:#0B1A3A;      /* 文字の紺 */
+  --pink:#E8609F;     /* ネオンピンク：いちばん大事なボタン・強調 */
+  --pink2:#FFD6EC;    /* うすいピンク：帯・しるし */
+  --cyan:#19E3FF;     /* シアン：光・かざり・影 */
+  --display:"Dela Gothic One","Hiragino Kaku Gothic StdN","Yu Gothic",sans-serif;
+  --body:"Zen Kaku Gothic New","Hiragino Kaku Gothic ProN","Yu Gothic",sans-serif;
+  --mincho:"Shippori Mincho","Hiragino Mincho ProN","Yu Mincho",serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:var(--body);font-weight:500;color:var(--ink);background:var(--white);line-height:1.8;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+a{color:inherit}
+p,li,dt,h3{word-break:auto-phrase;line-break:strict}
+img,svg,canvas{display:block;max-width:100%}
+.inner{width:min(1080px,100% - 40px);margin-inline:auto}
+:focus-visible{outline:3px solid var(--pink);outline-offset:3px}
+
+/* 仮・準備中のしるし */
+.kari{display:inline-block;font-family:var(--body);font-weight:700;font-size:11px;line-height:1.5;background:var(--pink2);color:var(--ink);border:1.5px solid var(--ink);border-radius:4px;padding:0 5px;margin-left:6px;vertical-align:middle;letter-spacing:.05em;white-space:nowrap}
+.trial{background:var(--ink);color:var(--white);font-size:12px;text-align:center;padding:5px 10px}
+
+/* スクロールの進み具合バー */
+#bar{position:fixed;left:0;top:0;height:4px;width:100%;background:linear-gradient(90deg,var(--cyan),var(--pink));transform-origin:left;transform:scaleX(0);z-index:60}
+
+/* ---------- ナビ（3ページ共通で使う部分） ---------- */
+header{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.82);backdrop-filter:blur(10px);border-bottom:2.5px solid var(--ink)}
+.nav{display:flex;align-items:center;justify-content:space-between;gap:8px;height:54px}
+.logo{font-family:var(--display);font-weight:400;font-size:15px;text-decoration:none;white-space:nowrap}
+.nav ul{display:flex;list-style:none;gap:4px}
+.nav li a{display:block;font-weight:700;font-size:12.5px;text-decoration:none;padding:6px 9px;border-radius:999px;transition:background .2s,transform .2s;white-space:nowrap}
+.nav li a:hover{background:var(--sky);transform:translateY(-2px)}
+.nav li a[aria-current]{background:var(--ink);color:var(--white)}
+
+/* ---------- ヒーロー（最初の画面） ---------- */
+.hero{position:relative;background:
+   linear-gradient(var(--sky2),var(--white) 85%),var(--white);
+  padding:34px 0 0;overflow:hidden}
+.hero::before{content:"";position:absolute;inset:0;background-image:linear-gradient(rgba(11,26,58,.06) 1px,transparent 1px),linear-gradient(90deg,rgba(11,26,58,.06) 1px,transparent 1px);background-size:36px 36px;mask-image:linear-gradient(#000,transparent 80%);-webkit-mask-image:linear-gradient(#000,transparent 80%);animation:grid 14s linear infinite}
+@keyframes grid{to{background-position:36px 36px}}
+.hero .inner{position:relative}
+.status{display:inline-flex;align-items:center;gap:8px;font-weight:700;font-size:13px;background:var(--white);border:2.5px solid var(--ink);border-radius:999px;padding:3px 12px;box-shadow:3px 3px 0 var(--ink)}
+.status i{width:10px;height:10px;border-radius:50%;background:var(--pink);animation:blink 1.2s ease-in-out infinite}
+.status[data-state="few"] i{background:#FF8A00}
+.status[data-state="full"] i{background:#9AA3B5;animation:none}
+@keyframes blink{50%{transform:scale(.5);opacity:.4}}
+
+h1{font-family:var(--display);font-weight:400;line-height:1;letter-spacing:-.02em;font-size:clamp(58px,19.5vw,168px);margin:18px 0 0}
+h1 .line{display:block;white-space:nowrap}
+h1 .l2{color:var(--pink);margin-left:.45em}
+h1 .l3{font-size:1.15em;color:var(--white);-webkit-text-stroke:.035em var(--ink);text-shadow:.06em .06em 0 var(--cyan);paint-order:stroke fill;margin-top:.04em}
+@media(min-width:900px){
+  h1{font-size:min(12.2vw,140px)}
+}
+.ch{display:inline-block;animation:pop .8s cubic-bezier(.2,1.5,.4,1) both;animation-delay:calc(var(--i)*70ms + 150ms)}
+@keyframes pop{0%{transform:translateY(.9em) rotate(14deg) scale(.6);opacity:0}100%{transform:none;opacity:1}}
+h1 .l3 .ch:last-child{animation:pop .8s cubic-bezier(.2,1.5,.4,1) both,bikkuri 1.6s 1.4s ease-in-out infinite;animation-delay:calc(var(--i)*70ms + 150ms),1.4s;transform-origin:50% 90%}
+@keyframes bikkuri{0%,60%,100%{transform:none}70%{transform:rotate(-14deg) translateY(-.06em)}80%{transform:rotate(10deg)}90%{transform:rotate(-4deg)}}
+.ch:hover{color:var(--cyan)}
+
+.lead{max-width:30em;font-size:15.5px;margin:22px 0 0;font-weight:700}
+.btns{display:flex;flex-wrap:wrap;gap:12px;margin:20px 0 0}
+.btn{display:inline-flex;align-items:center;gap:8px;font-weight:700;font-size:16px;text-decoration:none;color:var(--ink);background:var(--pink);border:2.5px solid var(--ink);border-radius:999px;padding:12px 24px;box-shadow:5px 5px 0 var(--ink);transition:transform .15s,box-shadow .15s;cursor:pointer;font-family:inherit}
+.btn:hover{transform:translate(-2px,-2px);box-shadow:8px 8px 0 var(--ink)}
+.btn:active{transform:translate(4px,4px);box-shadow:1px 1px 0 var(--ink)}
+.btn.sub{background:var(--white)}
+.btn.lime{background:var(--cyan)}
+.btn .arw{display:inline-block;animation:arw 1s ease-in-out infinite}
+@keyframes arw{50%{transform:translateX(5px)}}
+
+/* ふわふわ浮くかざり */
+.deco{position:absolute;pointer-events:none;will-change:transform}
+.deco>*{animation:float 6s ease-in-out infinite}
+@keyframes float{50%{transform:translateY(-16px) rotate(8deg)}}
+.d1{right:4%;top:6%;width:clamp(46px,9vw,96px)}
+.d2{right:5%;top:34%;width:clamp(26px,5vw,54px)}.d2>*{animation-duration:4.5s;animation-delay:-2s}
+.d3{left:58%;top:4%;width:clamp(20px,3vw,34px)}.d3>*{animation-duration:5s;animation-delay:-1s}
+.d4{right:6%;top:60%;width:clamp(60px,12vw,130px)}.d4>*{animation:none}
+.badge{animation:spin 14s linear infinite!important}
+@keyframes spin{to{transform:rotate(360deg)}}
+.badge text{font-family:var(--display);font-weight:400;font-size:13.5px;fill:var(--ink);letter-spacing:.06em}
+
+/* 流れる帯 */
+.bands{position:relative;margin-top:40px;height:120px}
+.band{position:absolute;left:-5%;width:110%;white-space:nowrap;overflow:hidden;font-family:var(--display);font-weight:400;border-block:2.5px solid var(--ink);padding:6px 0;font-size:clamp(17px,3.4vw,26px)}
+.band span{display:inline-block;animation:run 22s linear infinite;padding-right:0}
+.band.b1{top:14px;background:var(--cyan);transform:rotate(-3deg)}
+.band.b2{top:52px;background:var(--pink2);transform:rotate(2deg)}
+.band.b2 span{animation-direction:reverse;animation-duration:28s}
+@keyframes run{to{transform:translateX(-50%)}}
+
+/* ---------- 共通：セクション ---------- */
+section{padding:72px 0;position:relative}
+.sec-h{margin-bottom:30px}
+.sec-h .en{font-family:var(--display);font-weight:400;font-size:clamp(44px,11vw,104px);line-height:1;letter-spacing:-.01em;display:block;overflow:hidden;padding-bottom:.08em}
+.sec-h .en .ch{animation:none;transform:translateY(110%);transition:transform .7s cubic-bezier(.2,1.2,.3,1);transition-delay:calc(var(--i)*45ms)}
+.on .sec-h .en .ch,.sec-h.on .en .ch{transform:none}
+.sec-h .jp{display:inline-block;font-weight:700;font-size:15px;background:var(--ink);color:var(--white);padding:1px 12px;border-radius:999px;margin-top:8px}
+.rv{opacity:0;transform:translateY(64px) scale(.93);filter:blur(6px);transition:opacity .8s ease,transform 1s cubic-bezier(.2,1.35,.35,1),filter .8s ease;transition-delay:var(--d,0ms)}
+.rv.on{opacity:1;transform:none;filter:none}
+
+/* ---------- 2つの路線 ---------- */
+.styles{background:var(--white)}
+.two{display:grid;gap:22px;grid-template-columns:1fr}
+@media(min-width:800px){.two{grid-template-columns:1fr 1fr}}
+.card{border:2.5px solid var(--ink);border-radius:22px;overflow:hidden;background:var(--white);box-shadow:7px 7px 0 var(--ink)}
+.stage{position:relative;aspect-ratio:16/9;overflow:hidden}
+.stage .live{position:absolute;left:10px;top:10px;font-size:11px;font-weight:700;background:var(--white);color:var(--ink);border:1.5px solid var(--ink);border-radius:999px;padding:0 8px;z-index:3}
+.card .txt{padding:16px 18px 20px;border-top:2.5px solid var(--ink)}
+.card .no{font-family:var(--display);font-weight:400;font-size:15px;color:var(--pink)}
+.card h3{font-family:var(--display);font-weight:400;font-size:clamp(21px,3.3vw,28px);line-height:1.3;margin:2px 0 8px}
+.card p{font-size:14.5px}
+.card ul{list-style:none;display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}
+.card li{font-size:12px;font-weight:700;border:1.5px solid var(--ink);border-radius:999px;padding:0 9px;background:var(--sky2)}
+
+/* 01 グラフィック：文字が切り替わるデモ */
+.kinetic{background:var(--sky);display:grid;place-items:center}
+.kinetic::before,.kinetic::after{content:"";position:absolute;border:2.5px solid var(--ink)}
+.kinetic::before{width:36%;aspect-ratio:1;border-radius:50%;background:var(--white);left:-8%;bottom:-30%;animation:float 5s ease-in-out infinite}
+.kinetic::after{width:18%;aspect-ratio:1;background:var(--pink);right:6%;top:10%;animation:spin 9s linear infinite}
+#kword{position:relative;z-index:2;font-family:var(--display);font-weight:400;font-size:clamp(40px,11vw,84px);line-height:1;white-space:nowrap}
+#kword span{display:inline-block}
+.k0 span{animation:k0 .5s cubic-bezier(.2,1.6,.4,1) both;animation-delay:calc(var(--i)*60ms)}
+@keyframes k0{from{transform:translateY(120%) rotate(20deg);opacity:0}}
+.k1 span{animation:k1 .45s cubic-bezier(.2,1.4,.4,1) both;animation-delay:calc(var(--i)*50ms);color:var(--pink)}
+@keyframes k1{from{transform:scale(3);opacity:0}}
+.k2 span{animation:k2 .5s ease-out both;animation-delay:calc(var(--i)*70ms);color:var(--white);-webkit-text-stroke:.04em var(--ink);paint-order:stroke fill}
+@keyframes k2{from{transform:translateX(-1.2em) skewX(-30deg);opacity:0}}
+.k3 span{animation:k3 .6s cubic-bezier(.2,1.8,.4,1) both;animation-delay:calc(var(--i)*40ms)}
+@keyframes k3{from{transform:rotate(180deg) scale(0)}}
+
+/* 02 シネマティック：光の粒デモ */
+.cine{background:linear-gradient(#071433,#12357E 60%,#2E7FC9)}
+.cine canvas{position:absolute;inset:0;width:100%;height:100%}
+.cine .bars::before,.cine .bars::after{content:"";position:absolute;left:0;right:0;height:11%;background:#030817;z-index:2}
+.cine .bars::before{top:0}.cine .bars::after{bottom:0}
+.cine .ct{position:absolute;inset:0;display:grid;place-items:center;z-index:2;font-family:var(--mincho);color:var(--white);font-size:clamp(17px,3.8vw,27px);letter-spacing:.35em;text-shadow:0 0 18px var(--cyan);animation:breath 7s ease-in-out infinite}
+@keyframes breath{0%,100%{opacity:0;filter:blur(8px);letter-spacing:.2em}35%,70%{opacity:1;filter:none;letter-spacing:.4em}}
+
+
+/* ---- STYLE見本のかざり ---- */
+.kinetic .k-dots{position:absolute;inset:0;background-image:radial-gradient(rgba(11,26,58,.18) 1.6px,transparent 1.8px);background-size:14px 14px;mask-image:linear-gradient(120deg,#000 10%,transparent 60%);-webkit-mask-image:linear-gradient(120deg,#000 10%,transparent 60%)}
+.kinetic .k-ring{position:absolute;left:50%;top:50%;width:64%;aspect-ratio:1;margin:-32% 0 0 -32%;border:3px dashed var(--ink);border-radius:50%;opacity:.35;animation:spin 16s linear infinite;z-index:1}
+.k-chip{position:absolute;z-index:1;font-weight:700;color:var(--ink);animation:float 3.6s ease-in-out infinite}
+.k-chip.c1{left:12%;top:18%;font-size:22px;color:var(--pink)}
+.k-chip.c2{left:30%;bottom:20%;font-size:20px;animation-delay:-1s}
+.k-chip.c3{right:24%;bottom:16%;font-size:12px;color:var(--pink);animation-delay:-2s}
+.k-chip.c4{right:30%;top:14%;font-size:15px;color:var(--white);-webkit-text-stroke:1.5px var(--ink);animation-delay:-.5s}
+.k-tape{position:absolute;left:-10%;width:120%;top:68%;transform:rotate(-6deg);white-space:nowrap;overflow:hidden;font-family:var(--display);font-size:11px;letter-spacing:.08em;background:var(--white);border-block:2px solid var(--ink);padding:2px 0;z-index:1;opacity:.9}
+.k-tape{animation:tape 10s linear infinite}
+@keyframes tape{from{text-indent:0}to{text-indent:-50%}}
+.k-eq{position:absolute;left:12px;bottom:14px;display:flex;align-items:flex-end;gap:3px;height:26px;z-index:3}
+.k-eq i{width:5px;background:var(--ink);border-radius:2px;animation:eq .9s ease-in-out infinite}
+.k-eq i:nth-child(2){animation-delay:-.3s}.k-eq i:nth-child(3){animation-delay:-.6s;background:var(--pink)}.k-eq i:nth-child(4){animation-delay:-.15s}.k-eq i:nth-child(5){animation-delay:-.45s}
+@keyframes eq{0%,100%{height:20%}50%{height:100%}}
+.k-bar{position:absolute;left:46px;right:12px;bottom:18px;height:5px;background:rgba(255,255,255,.7);border:1.5px solid var(--ink);border-radius:9px;overflow:hidden;z-index:3}
+.k-bar i{display:block;height:100%;width:100%;background:var(--pink);transform-origin:left;animation:prog 8s linear infinite}
+@keyframes prog{from{transform:scaleX(0)}to{transform:scaleX(1)}}
+
+.cine .c-beam{position:absolute;inset:-20%;background:repeating-linear-gradient(105deg,transparent 0 40px,rgba(25,227,255,.10) 40px 70px,transparent 70px 130px);animation:beam 9s ease-in-out infinite;mix-blend-mode:screen}
+@keyframes beam{50%{transform:translateX(6%);opacity:.5}}
+.cine .c-moon{position:absolute;right:12%;top:18%;width:16%;aspect-ratio:1;border-radius:50%;background:radial-gradient(circle at 38% 36%,#FFF7FB,#FFD6EC 55%,#E8A0C4);box-shadow:0 0 40px 12px rgba(255,214,236,.35);animation:glow 6s ease-in-out infinite}
+@keyframes glow{50%{box-shadow:0 0 70px 22px rgba(255,214,236,.5)}}
+.cine .c-shoot{position:absolute;left:10%;top:20%;width:90px;height:2px;background:linear-gradient(90deg,transparent,#fff);transform:rotate(-20deg);opacity:0;animation:shoot 5s ease-in infinite;animation-delay:1.5s}
+@keyframes shoot{0%,80%{opacity:0;transform:translate(0,0) rotate(-20deg)}84%{opacity:1}100%{opacity:0;transform:translate(160px,-58px) rotate(-20deg)}}
+.cine .c-grain{position:absolute;inset:0;background-image:radial-gradient(rgba(255,255,255,.08) 1px,transparent 1px);background-size:3px 3px;box-shadow:inset 0 0 60px 20px rgba(3,8,23,.75);pointer-events:none}
+.cine .c-tc{position:absolute;right:12px;bottom:3%;z-index:3;font-size:10.5px;font-weight:700;letter-spacing:.1em;color:#fff;opacity:.85}
+.cine .c-tc::first-letter{color:var(--pink)}
+
+
+/* ---------- ハンバーガー ---------- */
+.nav-r{display:flex;align-items:center;gap:6px}
+.burger{width:42px;height:38px;border:2.5px solid var(--ink);border-radius:12px;background:var(--white);box-shadow:3px 3px 0 var(--ink);display:grid;place-content:center;gap:4px;cursor:pointer;transition:transform .15s}
+.burger:active{transform:translate(2px,2px);box-shadow:1px 1px 0 var(--ink)}
+.burger span{display:block;width:18px;height:2.5px;background:var(--ink);border-radius:2px;transition:transform .3s,opacity .3s}
+.burger[aria-expanded="true"] span:nth-child(1){transform:translateY(6.5px) rotate(45deg)}
+.burger[aria-expanded="true"] span:nth-child(2){opacity:0}
+.burger[aria-expanded="true"] span:nth-child(3){transform:translateY(-6.5px) rotate(-45deg)}
+@media(max-width:640px){.pages{display:none}}
+.menu{position:fixed;inset:0;z-index:80}
+.menu[hidden]{display:none}
+.menu-bg{position:absolute;inset:0;background:rgba(11,26,58,.45);backdrop-filter:blur(3px);animation:fadeIn .3s both}
+@keyframes fadeIn{from{opacity:0}}
+.menu-panel{position:absolute;right:0;top:0;bottom:0;width:min(380px,88vw);background:var(--sky2);border-left:2.5px solid var(--ink);padding:70px 22px 30px;overflow-y:auto;animation:slideIn .45s cubic-bezier(.2,1.2,.3,1) both;
+  background-image:radial-gradient(rgba(11,26,58,.08) 1.4px,transparent 1.6px);background-size:16px 16px}
+@keyframes slideIn{from{transform:translateX(100%)}}
+.menu-close{position:absolute;right:16px;top:14px;width:42px;height:42px;border-radius:50%;border:2.5px solid var(--ink);background:var(--white);font-size:24px;line-height:1;font-weight:700;color:var(--ink);box-shadow:3px 3px 0 var(--ink);cursor:pointer}
+.menu-close:hover{background:var(--pink2)}
+.menu-h{font-size:12px;font-weight:700;margin:4px 0 8px}
+.menu-list{list-style:none;display:grid;gap:7px;margin-bottom:20px;counter-reset:m}
+.menu-list li{animation:itemIn .5s cubic-bezier(.2,1.4,.4,1) both;animation-delay:calc(var(--i)*45ms + 120ms)}
+@keyframes itemIn{from{opacity:0;transform:translateX(40px)}}
+.menu-list a{display:flex;align-items:baseline;gap:12px;text-decoration:none;background:var(--white);border:2.5px solid var(--ink);border-radius:14px;padding:8px 14px;transition:transform .15s,box-shadow .15s,background .15s}
+.menu-list a:hover{transform:translate(-2px,-2px);box-shadow:4px 4px 0 var(--pink);background:var(--white)}
+.menu-list a.here{background:var(--sky)}
+.m-en{font-family:var(--display);font-size:20px;min-width:5.2em}
+.m-jp{font-size:13px;font-weight:700}
+.menu-pages{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:18px}
+.menu-pages a{font-weight:700;font-size:13.5px;text-decoration:none;border:2px solid var(--ink);border-radius:999px;padding:4px 12px;background:var(--white)}
+.menu-pages a[aria-current]{background:var(--ink);color:var(--white)}
+.menu-x{width:100%;justify-content:center}
+section[id]{scroll-margin-top:62px}
+
+/* ---------- WORKSカルーセル ---------- */
+.track{display:flex;gap:16px;overflow-x:auto;scroll-snap-type:x mandatory;scroll-behavior:smooth;padding:6px 6px 18px;margin:0 -6px;scrollbar-width:none}
+.track::-webkit-scrollbar{display:none}
+.track .work{flex:0 0 78%;scroll-snap-align:start}
+@media(min-width:800px){.track .work{flex-basis:calc((100% - 32px)/3)}}
+.work.more .thumb{background:var(--white);background-image:none;animation:none;font-size:18px;border-bottom-style:dashed}
+.work.more .thumb::after{content:none}
+.c-ctrl{display:flex;align-items:center;justify-content:center;gap:14px;margin-top:4px}
+.c-btn{width:44px;height:44px;border-radius:50%;border:2.5px solid var(--ink);background:var(--white);font-size:18px;font-weight:700;color:var(--ink);box-shadow:3px 3px 0 var(--ink);cursor:pointer;transition:transform .15s,background .15s}
+.c-btn:hover{background:var(--sky);transform:translate(-1px,-1px)}
+.c-btn:active{transform:translate(2px,2px);box-shadow:1px 1px 0 var(--ink)}
+.c-btn:disabled{opacity:.35;cursor:default}
+.c-dots{display:flex;gap:7px}
+.c-dots i{width:10px;height:10px;border-radius:999px;border:2px solid var(--ink);background:var(--white);transition:width .3s,background .3s}
+.c-dots i.on{width:26px;background:var(--pink)}
+
+/* ---------- 作例 ---------- */
+.works{background:var(--sky2);border-block:2.5px solid var(--ink)}
+.wgrid{display:grid;gap:16px;grid-template-columns:1fr 1fr}
+@media(min-width:800px){.wgrid{grid-template-columns:repeat(4,1fr)}}
+.work{text-decoration:none;border:2.5px solid var(--ink);border-radius:16px;overflow:hidden;background:var(--white);transition:transform .25s cubic-bezier(.2,1.4,.4,1),box-shadow .25s;will-change:transform}
+.work:hover{transform:translateY(-6px) rotate(-1.5deg);box-shadow:6px 8px 0 var(--pink)}
+.thumb{aspect-ratio:16/9;position:relative;display:grid;place-items:center;font-family:var(--display);font-weight:400;font-size:clamp(15px,2.4vw,20px);background-size:300% 300%;animation:grad 7s ease infinite;border-bottom:2.5px solid var(--ink)}
+@keyframes grad{50%{background-position:100% 100%}}
+.t1{background-image:linear-gradient(120deg,var(--sky),var(--white),var(--pink2))}
+.t2{background-image:linear-gradient(120deg,#0B1A3A,#2E7FC9,var(--cyan));color:var(--white)}
+.t3{background-image:linear-gradient(120deg,var(--pink),var(--white),var(--sky))}
+.t4{background-image:linear-gradient(120deg,#12357E,#7AD3FF,#FF9AD1);color:var(--white)}
+.thumb::after{content:"▶";position:absolute;right:8px;bottom:6px;font-size:14px}
+.work p{font-size:12.5px;font-weight:700;padding:7px 10px 9px;line-height:1.5}
+.note{font-size:13px;margin-top:16px}
+.range{margin-top:26px;font-weight:700;font-size:15px;background:var(--grad-soft);border:2.5px solid var(--ink);border-radius:18px;padding:12px 18px;box-shadow:5px 5px 0 var(--ink)}
+
+/* ---------- 料金 ---------- */
+.pgrid{display:grid;gap:20px;grid-template-columns:1fr}
+@media(min-width:800px){.pgrid{grid-template-columns:repeat(3,1fr)}}
+.plan{position:relative;border:2.5px solid var(--ink);border-radius:22px;padding:22px 20px 20px;background:var(--white);box-shadow:7px 7px 0 var(--cyan);transition:transform .2s,box-shadow .2s}
+.plan:hover{transform:translate(-3px,-3px);box-shadow:10px 10px 0 var(--pink)}
+.plan.pick{background:var(--sky2);box-shadow:7px 7px 0 var(--pink)}
+/*未使用*/.plan .pop{position:absolute;right:14px;top:-15px;background:var(--pink);border:2.5px solid var(--ink);border-radius:999px;font-weight:700;font-size:12px;padding:0 10px;animation:wig 2.4s ease-in-out infinite}
+@keyframes wig{0%,80%,100%{transform:rotate(3deg)}90%{transform:rotate(-6deg) scale(1.08)}}
+.plan h3{font-family:var(--display);font-weight:400;font-size:22px;line-height:1.3}
+.plan .len{font-size:13px;font-weight:700}
+.plan .yen{font-family:var(--display);font-weight:400;font-size:clamp(36px,6vw,46px);line-height:1.2;margin:8px 0 6px;white-space:nowrap}
+.plan .yen small{font-size:.45em}
+.plan ul{list-style:none;font-size:14px;border-top:2px dashed var(--ink);padding-top:10px}
+.plan li{padding-left:1.3em;position:relative}
+.plan li::before{content:"✦";position:absolute;left:0;color:var(--pink)}
+.now{padding:40px 0 10px}
+.nowbox{border:2.5px solid var(--ink);border-radius:22px;background:var(--white);box-shadow:7px 7px 0 var(--pink);padding:18px 18px 16px;--sig:var(--pink);--sigbg:#FFE3F1}
+.nowbox[data-state="few"]{--sig:#FF8A00;--sigbg:#FFF0D9}
+.nowbox[data-state="full"]{--sig:#7C8698;--sigbg:#ECEFF4;box-shadow:7px 7px 0 #7C8698}
+.now-head{display:flex;justify-content:space-between;align-items:baseline;gap:10px;flex-wrap:wrap;margin-bottom:12px}
+.now-head h2{font-size:17px;font-weight:700;display:flex;align-items:baseline;gap:10px}
+.now-en{font-family:var(--display);font-weight:400;font-size:30px;line-height:1;color:var(--pink)}
+.now-upd{font-size:12px;font-weight:700}
+.signal{display:flex;align-items:center;gap:16px;background:var(--sigbg);border:2.5px solid var(--ink);border-radius:18px;padding:14px 16px}
+.lamp{flex:none;width:76px;height:76px;border-radius:50%;background:var(--sig);border:2.5px solid var(--ink);display:grid;place-items:center;color:var(--white);font-family:var(--display);font-size:34px;line-height:1;position:relative}
+.lamp::after{content:"";position:absolute;inset:-10px;border-radius:50%;border:3px solid var(--sig);animation:lampRing 1.8s ease-out infinite}
+.nowbox[data-state="full"] .lamp::after{animation:none;opacity:0}
+@keyframes lampRing{from{transform:scale(.85);opacity:.9}to{transform:scale(1.35);opacity:0}}
+.sig-word{font-family:var(--display);font-size:clamp(34px,9vw,56px);line-height:1.05;color:var(--sig)}
+.sig-line{font-weight:700;font-size:14.5px;margin-top:4px}
+.mini-h{font-size:12.5px;font-weight:700;margin:14px 0 6px}
+.slotcards{list-style:none;display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.slotcards li{border:2.5px solid var(--ink);border-radius:14px;padding:8px 6px;text-align:center;background:var(--white);font-weight:700;font-size:13px;line-height:1.4}
+.slotcards li .ic{display:block;font-size:22px;line-height:1.2}
+.slotcards li small{display:block;font-size:11px;font-weight:700}
+.slotcards li.making{background:var(--pink);color:var(--white)}
+.slotcards li.reserved{background:var(--sky)}
+.slotcards li.free{background:var(--white);border-style:dashed;animation:freeGlow 1.6s ease-in-out infinite}
+@keyframes freeGlow{50%{box-shadow:0 0 0 5px rgba(25,227,255,.45)}}
+.now-sub{display:grid;gap:12px;grid-template-columns:1fr;margin-top:2px}
+@media(min-width:760px){.now-sub{grid-template-columns:1fr 1.6fr}}
+.camp-left .cl-num{font-family:var(--display);font-size:34px;line-height:1.1;color:var(--pink)}
+.camp-left .cl-num small{font-size:15px;color:var(--ink);margin-left:4px}
+.cl-dots{display:flex;gap:6px;margin-top:4px}
+.cl-dots i{width:20px;height:20px;border-radius:50%;border:2px solid var(--ink);background:var(--pink)}
+.cl-dots i.gone{background:var(--white)}
+.lead-times{list-style:none}
+.lead-times li{display:flex;justify-content:space-between;gap:8px;font-size:14px;border-bottom:2px dashed rgba(11,26,58,.25);padding:3px 0}
+.lead-times li:last-child{border-bottom:0}
+.lead-times b{font-family:var(--display);font-weight:400;font-size:16px}
+.now-note{font-size:12.5px;margin-top:10px}
+
+/* ヘッダーにいつも出る小さな受付バッジ */
+.hchip{display:inline-flex;align-items:center;gap:6px;font-size:11.5px;font-weight:700;text-decoration:none;border:2px solid var(--ink);border-radius:999px;padding:2px 9px;background:var(--white);white-space:nowrap}
+.hchip i{width:9px;height:9px;border-radius:50%;background:var(--pink);animation:blink 1.2s ease-in-out infinite}
+.hchip[data-state="few"] i{background:#FF8A00}
+.hchip[data-state="full"] i{background:#7C8698;animation:none}
+@media(max-width:420px){.logo{font-size:13px}.nav li a{padding:6px 7px;font-size:12px}}
+/* 料金 */
+.yen s{font-family:var(--body);font-weight:700;font-size:.42em;color:#5B6476;margin-right:6px;vertical-align:middle}
+.yen .now-p{color:var(--pink)}
+.plan .camp-mini{display:inline-block;color:var(--white);animation:wig 2.4s ease-in-out infinite;font-size:12px;font-weight:700;background:var(--pink);border:1.5px solid var(--ink);border-radius:999px;padding:0 9px;margin-bottom:2px}
+.plan .normal{font-size:13px;font-weight:700;margin-bottom:6px}
+.yen.soon{font-size:clamp(26px,5vw,32px);color:var(--pink)}
+.point{font-weight:700;font-size:15px;background:var(--sky2);border:2.5px solid var(--ink);border-radius:999px;padding:8px 18px;margin-bottom:34px;display:inline-block}
+.camp{position:relative;margin-bottom:34px;border:2.5px solid var(--ink);border-radius:24px;padding:26px 20px 18px;overflow:hidden;
+  background:linear-gradient(120deg,#FFD6EC,#fff 40%,#C4F3FF 70%,#FFD6EC);background-size:260% 100%;animation:grad 8s ease infinite;
+  box-shadow:8px 8px 0 var(--pink)}
+.camp-shine{position:absolute;top:-20%;bottom:-20%;width:30%;left:-40%;background:linear-gradient(100deg,transparent,rgba(255,255,255,.85),transparent);transform:skewX(-20deg);animation:shine 4.5s ease-in-out infinite;pointer-events:none}
+@keyframes shine{0%,55%{left:-40%}100%{left:130%}}
+.spark{position:absolute;color:var(--pink);font-size:22px;animation:twk 2.6s ease-in-out infinite;pointer-events:none}
+.spark.s1{right:22%;top:12px}.spark.s2{right:6%;top:48%;font-size:16px;color:var(--cyan);animation-delay:-.8s}.spark.s3{left:46%;bottom:10px;font-size:14px;animation-delay:-1.6s}
+@keyframes twk{0%,100%{transform:scale(.6) rotate(0);opacity:.4}50%{transform:scale(1.2) rotate(45deg);opacity:1}}
+.camp-tag{position:absolute;left:18px;top:10px;font-family:var(--display);font-weight:400;font-size:12px;letter-spacing:.12em;color:var(--white);background:var(--pink);border:2px solid var(--ink);border-radius:999px;padding:0 12px}
+.camp-top{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-top:14px;position:relative}
+.camp-title{font-family:var(--display);font-weight:400;font-size:clamp(28px,6.5vw,46px);line-height:1.15}
+.camp-title .sp{display:none}
+@media(max-width:480px){.camp-title .sp{display:inline}}
+.camp-badge{flex:none;width:96px;height:96px;border-radius:50%;background:var(--pink);color:var(--white);border:2.5px solid var(--ink);display:grid;place-content:center;text-align:center;font-weight:700;font-size:12px;line-height:1.3;animation:badgePulse 1.8s ease-in-out infinite;transform:rotate(8deg)}
+.camp-badge b{font-family:var(--display);font-weight:400;font-size:18px}
+@keyframes badgePulse{0%,100%{transform:rotate(8deg) scale(1)}50%{transform:rotate(8deg) scale(1.07)}}
+.camp-lead{font-weight:700;font-size:14.5px;margin:8px 0 12px;position:relative}
+.camp-prices{list-style:none;display:grid;gap:8px;grid-template-columns:1fr;position:relative}
+@media(min-width:760px){.camp-prices{grid-template-columns:repeat(3,1fr)}}
+.camp-prices li{display:flex;align-items:baseline;gap:8px;background:var(--white);border:2.5px solid var(--ink);border-radius:14px;padding:8px 14px}
+.cp-name{font-weight:700;font-size:13.5px;margin-right:auto}
+.camp-prices s{font-weight:700;font-size:13px;color:#5B6476}
+.cp-arw{font-weight:700;color:var(--pink)}
+.camp-prices b{font-family:var(--display);font-weight:400;font-size:26px;color:var(--pink);display:inline-block}
+.camp.on .camp-prices b{animation:pricePop .7s cubic-bezier(.2,1.8,.4,1) both}
+.camp.on .camp-prices li:nth-child(2) b{animation-delay:.15s}.camp.on .camp-prices li:nth-child(3) b{animation-delay:.3s}
+@keyframes pricePop{0%{transform:scale(.4)}70%{transform:scale(1.15)}100%{transform:none}}
+.camp-ask{display:flex;gap:12px;align-items:flex-start;margin-top:14px;background:var(--white);border:2px dashed var(--ink);border-radius:14px;padding:10px 14px;position:relative}
+.ask-ic{flex:none;width:30px;height:30px;border-radius:50%;background:var(--sky);border:2px solid var(--ink);display:grid;place-items:center;color:var(--pink);font-weight:700}
+.camp-ask p{font-size:14px}
+.camp-ask b{display:block;font-size:14.5px}
+.camp-period{font-size:12.5px;font-weight:700;margin-top:10px;position:relative}
+/* ヒーローの小さな告知 */
+.hero-camp{display:inline-flex;align-items:center;gap:8px;margin-top:16px;font-weight:700;font-size:13.5px;text-decoration:none;background:var(--white);border:2px solid var(--ink);border-radius:999px;padding:4px 14px 4px 4px}
+.hero-camp span{background:var(--pink);color:var(--white);border-radius:999px;padding:0 10px;font-size:12px;animation:wig 2.4s ease-in-out infinite}
+/* 準備中メニュー・MIX */
+.soon-grid{display:grid;gap:16px;grid-template-columns:1fr}
+@media(min-width:760px){.soon-grid{grid-template-columns:1fr 1fr}}
+.soon{position:relative;border:2.5px dashed var(--ink);border-radius:20px;padding:18px 18px 16px;background:var(--white)}
+.soon .stamp{position:absolute;right:14px;top:-13px;font-family:var(--display);font-size:12px;letter-spacing:.1em;background:var(--sky);border:2px solid var(--ink);border-radius:999px;padding:0 10px}
+.soon h3{font-family:var(--display);font-weight:400;font-size:21px;line-height:1.3;margin-bottom:6px}
+.soon p{font-size:14.5px}
+.cube{width:46px;height:46px;margin-bottom:8px;animation:spin3d 6s linear infinite;transform-style:preserve-3d}
+@keyframes spin3d{to{transform:rotateY(360deg)}}
+.mixpack{background:var(--pink);border-block:2.5px solid var(--ink)}
+.mixbox{background:var(--white);border:2.5px solid var(--ink);border-radius:24px;padding:22px 20px;box-shadow:8px 8px 0 var(--ink)}
+.mixbox .big{font-family:var(--display);font-size:clamp(28px,7vw,52px);line-height:1.15}
+.mixbox .big em{font-style:normal;color:var(--pink)}
+.mixbox p{font-size:15px;margin-top:10px}
+.pack{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-top:14px;font-family:var(--display);font-size:clamp(18px,4vw,26px)}
+.pack span{border:2.5px solid var(--ink);border-radius:14px;padding:4px 14px;background:var(--sky)}
+.pack span.v{background:var(--pink2)}
+.pack i{font-style:normal;color:var(--pink)}
+.opt{margin-top:26px;border:2.5px solid var(--ink);border-radius:18px;padding:16px 18px;background:var(--white)}
+.opt h3{font-size:16px;font-weight:700}
+.opt dl{display:grid;grid-template-columns:1fr auto;gap:2px 16px;font-size:14px;margin-top:6px}
+.opt dd{font-weight:700;text-align:right;white-space:nowrap}
+
+/* ---------- 流れ ---------- */
+.flow{background:var(--sky);border-block:2.5px solid var(--ink)}
+.steps{list-style:none;position:relative;display:grid;gap:14px}
+.steps::before{content:"";position:absolute;left:25px;top:10px;bottom:10px;width:4px;background:var(--ink);transform-origin:top;transform:scaleY(var(--p,0));border-radius:4px}
+.step{position:relative;display:grid;grid-template-columns:54px 1fr;gap:14px;align-items:start}
+.step .n{position:relative;z-index:1;width:54px;height:54px;border-radius:50%;display:grid;place-items:center;font-family:var(--display);font-weight:400;font-size:20px;background:var(--white);border:2.5px solid var(--ink);transition:background .3s,transform .5s cubic-bezier(.2,1.8,.4,1);transform:scale(.4)}
+.step.on .n{background:var(--cyan);transform:none}
+.step .box{background:var(--white);border:2.5px solid var(--ink);border-radius:16px;padding:10px 16px 12px}
+.step h3{font-size:17px;font-weight:700}
+.step p{font-size:14px}
+.pay{display:inline-block;font-weight:700;background:var(--sky2);border:1.5px solid var(--ink);border-radius:6px;padding:0 8px;margin:2px 4px 0 0;font-size:13px}
+
+/* ---------- 注意事項 ---------- */
+.rules ul{list-style:none;display:grid;gap:10px}
+.rules li{border-left:8px solid var(--cyan);background:var(--sky2);padding:10px 14px;border-radius:0 12px 12px 0;font-size:14.5px}
+.rules li b{display:block}
+
+/* ---------- 最後のよびかけ ---------- */
+.cta{background:var(--ink);color:var(--white);text-align:center;overflow:hidden}
+.cta h2{font-family:var(--display);font-weight:400;font-size:clamp(34px,9vw,84px);line-height:1.15}
+.cta h2 em{font-style:normal;color:var(--cyan);display:inline-block;animation:wig 2.4s ease-in-out infinite}
+.cta p{margin:14px auto 0;max-width:32em;font-size:15px}
+.cta .btns{justify-content:center;margin-top:24px}
+.cta .btn{box-shadow:5px 5px 0 var(--white)}
+.cta .btn:hover{box-shadow:8px 8px 0 var(--white)}
+.tpl{margin:26px auto 0;max-width:460px;text-align:left;background:rgba(255,255,255,.08);border:2px dashed var(--sky);border-radius:14px;padding:14px 16px;font-size:13.5px;white-space:pre-wrap;font-family:var(--body)}
+#copied{display:inline-block;min-height:1.8em;font-weight:700;color:var(--cyan);margin-top:8px}
+.cta .ring{position:absolute;border:2.5px solid var(--cyan);border-radius:50%;opacity:.35;animation:ring 6s linear infinite;left:50%;top:50%;width:200px;height:200px;margin:-100px}
+.cta .ring:nth-child(2){animation-delay:-2s}.cta .ring:nth-child(3){animation-delay:-4s}
+@keyframes ring{from{transform:scale(.4);opacity:.5}to{transform:scale(6);opacity:0}}
+.cta .inner{position:relative}
+
+footer{background:var(--white);border-top:2.5px solid var(--ink);padding:22px 0 80px;font-size:13px;text-align:center}
+footer nav a{font-weight:700;margin:0 8px}
+
+/* 動きを止めるボタン */
+#motion{position:fixed;right:12px;bottom:12px;z-index:70;font-family:var(--body);font-weight:700;font-size:12px;color:var(--ink);background:var(--white);border:2.5px solid var(--ink);border-radius:999px;padding:6px 12px;box-shadow:3px 3px 0 var(--ink);cursor:pointer}
+
+
+/* =========================================================
+   グラデーション版：水色 × ピンク
+   ========================================================= */
+:root{
+  --g1:#2ED8FF;  /* あざやかな水色 */
+  --g2:#8FA8FF;  /* まんなかの青むらさき */
+  --g3:#FF6FB5;  /* あざやかなピンク */
+  --grad:linear-gradient(120deg,var(--g1),var(--g2) 50%,var(--g3));
+  --grad-soft:linear-gradient(120deg,#C8F4FF,#E4E1FF 50%,#FFD3EA);
+}
+@keyframes gradMove{0%,100%{background-position:0% 50%}50%{background-position:100% 50%}}
+/* 最初の画面：やわらかいグラデーションがゆっくり動く */
+.hero{background:linear-gradient(120deg,#A9EEFF,#D9D6FF 35%,#FFC3E1 65%,#A9EEFF);background-size:300% 300%;animation:gradMove 14s ease infinite}
+.hero::before{mask-image:linear-gradient(#000,transparent 90%);-webkit-mask-image:linear-gradient(#000,transparent 90%)}
+/* 見出しの英字をグラデーション文字に */
+.sec-h .en .ch{background:var(--grad);background-size:200% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;animation:gradMove 6s ease infinite}
+.sec-h .en .ch{transform:translateY(110%)}
+.on .sec-h .en .ch,.sec-h.on .en .ch{transform:none}
+h1 .l3{text-shadow:.06em .06em 0 var(--g3)}
+/* ボタン・バー・帯 */
+.btn{background:var(--grad);background-size:200% 100%;animation:gradMove 5s ease infinite}
+.btn.sub{background:var(--white);animation:none}
+#bar{background:var(--grad)}
+.band.b1{background:var(--grad);background-size:200% 100%;animation:gradMove 8s ease infinite}
+.band.b2{background:var(--grad-soft)}
+.status i,.hchip i{background:var(--g3)}
+/* 受付状況・カード */
+.nowbox{box-shadow:7px 7px 0 var(--g3)}
+.now-en,.m-en{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+.signal{background:var(--grad-soft)}
+.nowbox[data-state="open"] .lamp{background:var(--grad)}
+.slotcards li.making{background:var(--grad);color:var(--white)}
+.card,.plan{box-shadow:7px 7px 0 var(--g1)}
+.plan.pick{box-shadow:7px 7px 0 var(--g3)}
+.kinetic{background:linear-gradient(135deg,#B5F0FF,#FFD0E8)}
+.thumb.t1{background-image:linear-gradient(120deg,var(--g1),#fff,var(--g3))}
+.thumb.t3{background-image:linear-gradient(120deg,var(--g3),#fff,var(--g1))}
+.c-dots i.on{background:var(--grad)}
+/* キャンペーン */
+.camp{background:linear-gradient(120deg,#9BEBFF,#FFFFFF 35%,#FFC2E2 70%,#9BEBFF);background-size:300% 100%;box-shadow:8px 8px 0 var(--g3)}
+.camp-badge,.camp-tag{background:var(--grad)}
+.camp-prices b,.yen .now-p{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+.plan .camp-mini{background:var(--grad)}
+/* MIXの帯・流れ */
+.mixpack{background:linear-gradient(120deg,var(--g1),var(--g2) 50%,var(--g3));background-size:200% 200%;animation:gradMove 10s ease infinite}
+.flow{background:var(--grad-soft)}
+.step.on .n{background:var(--grad);color:var(--white)}
+.steps::before{background:var(--grad)}
+.works{background:linear-gradient(180deg,#E9FBFF,#FFF0F8)}
+.cta{background:linear-gradient(135deg,#0B1A3A,#2B2A6E 60%,#5A2A6E)}
+.cta h2 em{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+.menu-panel{background-color:#F3F6FF}
+.trial{background:linear-gradient(90deg,#0B1A3A,#2B2A6E)}
+
+/* 動きを止めたとき／端末で「動きを減らす」設定のとき */
+html.still *,html.still *::before,html.still *::after{animation-play-state:paused!important}
+html.still{scroll-behavior:auto}
+/* 一度だけ出てくる動きは、止めているときは「最初から表示」にする（止まったまま見えなくなるのを防ぐ） */
+html.still .ch,html.still #kword span,html.still .menu-bg,html.still .menu-panel,html.still .menu-list li,
+html.still .camp-prices b,html.still .slots i.used{animation:none!important}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  .rv{opacity:1;transform:none;filter:none;transition:none}
+  .sec-h .en .ch{transform:none;transition:none}
+  .step .n{transform:none}
+}
+</style>
+</head>
+<body>
+
+<div id="bar"></div>
+<div class="trial">これは試作ページです。<b>「仮」「準備中」</b>のしるしが付いた所は、まだ決まっていない内容です。</div>
+
+<!-- ============ ナビ：3ページで同じものを使います ============ -->
+<header>
+  <div class="inner nav">
+    <div style="display:flex;align-items:center;gap:8px"><a class="logo" href="index.html">水瀬みつき</a><a class="hchip" id="hchip" href="#now" data-state="open"><i></i><span id="hchipText">受付中</span></a></div>
+    <div class="nav-r">
+      <nav aria-label="ページ切り替え" class="pages">
+        <ul>
+          <!-- ★リンク先のファイル名は仮。実際のファイル名に合わせて書き換える -->
+          <li><a href="movie.html" aria-current="page">動画依頼</a></li>
+          <li><a href="mix.html">MIX依頼</a></li>
+          <li><a href="portfolio.html">ポートフォリオ</a></li>
+        </ul>
+      </nav>
+      <button class="burger" id="burger" type="button" aria-expanded="false" aria-controls="menu" aria-label="メニューを開く"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+</header>
+
+<!-- ============ ハンバーガーメニュー ============ -->
+<div class="menu" id="menu" hidden>
+  <div class="menu-bg" data-close></div>
+  <div class="menu-panel" role="dialog" aria-modal="true" aria-label="メニュー">
+    <button class="menu-close" type="button" data-close aria-label="メニューを閉じる">×</button>
+    <p class="menu-h">このページの中</p>
+    <ol class="menu-list">
+      <li><a href="#now"><span class="m-en">NOW</span><span class="m-jp">いまの受付状況</span></a></li>
+      <li><a href="#style"><span class="m-en">STYLE</span><span class="m-jp">つくれるMV</span></a></li>
+      <li><a href="#works"><span class="m-en">WORKS</span><span class="m-jp">作例</span></a></li>
+      <li><a href="#price"><span class="m-en">PRICE</span><span class="m-jp">料金・キャンペーン</span></a></li>
+      <li><a href="#soon"><span class="m-en">SOON</span><span class="m-jp">準備中のメニュー</span></a></li>
+      <li><a href="#mix"><span class="m-en">MIX</span><span class="m-jp">MIX・おまかせパック</span></a></li>
+      <li><a href="#flow"><span class="m-en">FLOW</span><span class="m-jp">ご依頼の流れ</span></a></li>
+      <li><a href="#rules"><span class="m-en">RULES</span><span class="m-jp">お願いと約束</span></a></li>
+      <li><a href="#contact"><span class="m-en">CONTACT</span><span class="m-jp">ご相談</span></a></li>
+    </ol>
+    <p class="menu-h">ほかのページ</p>
+    <div class="menu-pages">
+      <a href="movie.html" aria-current="page">動画依頼</a><a href="mix.html">MIX依頼</a><a href="portfolio.html">ポートフォリオ</a>
+    </div>
+    <a class="btn menu-x" href="https://x.com/minasemitsuki" target="_blank" rel="noopener">Xで相談する <span class="arw">→</span></a>
+  </div>
+</div>
+
+<main>
+<!-- ============ ヒーロー ============ -->
+<section class="hero" style="padding-bottom:0">
+  <div class="deco d1" data-para=".25"><svg viewBox="0 0 100 100"><path d="M50 2 61 39 98 50 61 61 50 98 39 61 2 50 39 39Z" fill="#19E3FF" stroke="#0B1A3A" stroke-width="4" stroke-linejoin="round"/></svg></div>
+  <div class="deco d2" data-para=".5"><svg viewBox="0 0 100 100"><circle cx="50" cy="50" r="44" fill="#E8609F" stroke="#0B1A3A" stroke-width="6"/></svg></div>
+  <div class="deco d3" data-para=".8"><svg viewBox="0 0 100 100"><path d="M50 2 61 39 98 50 61 61 50 98 39 61 2 50 39 39Z" fill="#FFD6EC" stroke="#0B1A3A" stroke-width="6" stroke-linejoin="round"/></svg></div>
+  <div class="deco d4" data-para=".35">
+    <svg class="badge" viewBox="0 0 120 120" aria-hidden="true">
+      <circle cx="60" cy="60" r="58" fill="#fff" stroke="#0B1A3A" stroke-width="3"/>
+      <defs><path id="circ" d="M60 60m-43 0a43 43 0 1 1 86 0a43 43 0 1 1-86 0"/></defs>
+      <text><textPath href="#circ">MV ORDER OPEN ✦ MV ORDER OPEN ✦ </textPath></text>
+      <circle cx="60" cy="60" r="20" fill="#E8609F" stroke="#0B1A3A" stroke-width="3"/>
+      <path d="M54 50v20l17-10z" fill="#fff" stroke="#0B1A3A" stroke-width="3" stroke-linejoin="round"/>
+    </svg>
+  </div>
+
+  <div class="inner">
+    <p class="status" data-state="open"><i></i><span id="heroStatus">MV制作 ご依頼受付中</span></p>
+    <h1 aria-label="その歌をMVに！">
+      <span class="line l1" data-split aria-hidden="true">その歌を</span>
+      <span class="line l3" data-split aria-hidden="true">MVに！</span>
+    </h1>
+    <p class="lead">ポップで元気なMVから、しっとり落ち着いたMVまで。<br>ご要望に合わせて、1本ずつ丁寧におつくりします。</p>
+    <div class="btns">
+            <a class="btn" href="https://x.com/minasemitsuki" target="_blank" rel="noopener">Xで相談する <span class="arw">→</span></a>
+      <a class="btn sub" href="#price">料金を見る</a>
+    </div>
+    <a class="hero-camp" href="#campaign"><span>CAMPAIGN</span>実績づくりキャンペーン実施中 →</a>
+  </div>
+
+  <div class="bands" aria-hidden="true">
+    <div class="band b1"><span>MV制作 ご依頼受付中 ✦ KINETIC TYPOGRAPHY ✦ 歌ってみたMV ✦ CINEMATIC ✦ MV制作 ご依頼受付中 ✦ KINETIC TYPOGRAPHY ✦ 歌ってみたMV ✦ CINEMATIC ✦ MV制作 ご依頼受付中 ✦ KINETIC TYPOGRAPHY ✦ 歌ってみたMV ✦ CINEMATIC ✦ MV制作 ご依頼受付中 ✦ KINETIC TYPOGRAPHY ✦ 歌ってみたMV ✦ CINEMATIC ✦ </span></div>
+    <div class="band b2"><span>GRAPHIC MV ● CINEMATIC MV ● SHORT / ONE CHORUS / FULL ● GRAPHIC MV ● CINEMATIC MV ● SHORT / ONE CHORUS / FULL ● GRAPHIC MV ● CINEMATIC MV ● SHORT / ONE CHORUS / FULL ● GRAPHIC MV ● CINEMATIC MV ● SHORT / ONE CHORUS / FULL ● </span></div>
+  </div>
+</section>
+
+<!-- ============ 受付状況（★更新はページ下の STATUS を書き換えるだけ） ============ -->
+<section class="now" id="now" aria-labelledby="nowTitle">
+  <div class="inner">
+    <div class="nowbox rv" data-state="open">
+      <div class="now-head">
+        <h2 id="nowTitle"><span class="now-en">NOW</span>いまの受付状況</h2>
+        <span class="now-upd">最終更新：<span id="stUpdated"></span></span>
+      </div>
+
+      <!-- いちばん大事：信号みたいに一目でわかる表示 -->
+      <div class="signal">
+        <div class="lamp" aria-hidden="true"><span id="stMark">◎</span></div>
+        <div>
+          <p class="sig-word" id="stLabel">受付中</p>
+          <p class="sig-line" id="stLine"></p>
+        </div>
+      </div>
+
+      <!-- 枠の中身：だれの作品を作っているか -->
+      <p class="mini-h">制作枠</p>
+      <ol class="slotcards" id="stSlots"></ol>
+
+      <div class="now-sub">
+        <div class="camp-left">
+          <p class="mini-h">キャンペーン</p>
+          <p class="cl-num"><span id="stCampLeft"></span><small id="stCampTotal"></small></p>
+          <div class="cl-dots" id="stCampDots" aria-hidden="true"></div>
+        </div>
+        <div class="lead-box">
+          <p class="mini-h">いま頼んだ場合のお届けめやす</p>
+          <ul class="lead-times">
+            <li><span>ショート</span><b id="ltShort"></b></li>
+            <li><span>ワンコーラス</span><b id="ltOne"></b></li>
+            <li><span>フル</span><b id="ltFull"></b></li>
+          </ul>
+        </div>
+      </div>
+      <p class="now-note" id="stNote"></p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 2つの路線 ============ -->
+<section class="styles" id="style">
+  <div class="inner">
+    <div class="sec-h rv"><span class="en" data-split>STYLE</span><span class="jp">たとえば、こんなMV</span></div>
+    <div class="two">
+      <article class="card rv">
+        <div class="stage kinetic"><span class="live">うごく見本</span>
+          <span class="k-dots" aria-hidden="true"></span>
+          <span class="k-ring" aria-hidden="true"></span>
+          <span class="k-chip c1" aria-hidden="true">✦</span><span class="k-chip c2" aria-hidden="true">＋</span><span class="k-chip c3" aria-hidden="true">●</span><span class="k-chip c4" aria-hidden="true">✦</span>
+          <span class="k-tape" aria-hidden="true">LYRIC MOTION ✦ LYRIC MOTION ✦ LYRIC MOTION ✦ LYRIC MOTION ✦ LYRIC MOTION ✦ LYRIC MOTION ✦ </span>
+          <div id="kword" aria-hidden="true"></div>
+          <span class="k-eq" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></span>
+          <span class="k-bar" aria-hidden="true"><i></i></span>
+        </div>
+        <div class="txt">
+          <span class="no">01</span>
+          <h3>ポップに弾ける<br>グラフィックMV</h3>
+          <p>キャラクターイラストをしっかり目立たせながら、まわりで歌詞の文字がリズムに合わせて踊ります。テンポの速い曲や、言葉を強く届けたい曲に。</p>
+          <ul><li>キャラが主役</li><li>キネティックタイポグラフィ</li><li>イラスト1枚からOK</li></ul>
+        </div>
+      </article>
+      <article class="card rv" style="--d:120ms">
+        <div class="stage cine"><span class="live">うごく見本</span><canvas id="bokeh" aria-hidden="true"></canvas>
+          <span class="c-beam" aria-hidden="true"></span>
+          <span class="c-moon" aria-hidden="true"></span>
+          <span class="c-shoot" aria-hidden="true"></span>
+          <span class="c-grain" aria-hidden="true"></span>
+          <div class="bars"></div>
+          <span class="c-tc" aria-hidden="true">● REC　00:42</span><div class="ct" aria-hidden="true">夜明けまで</div></div>
+        <div class="txt">
+          <span class="no">02</span>
+          <h3>しっとり幻想的な<br>シネマティックMV</h3>
+          <p>光・粒子・ゆっくりしたカメラの動きで、映画のような空気をつくります。バラードや、世界観を見せたい曲に。</p>
+          <ul><li>光と粒子</li><li>しっとり</li><li>髪ゆれ・まばたき</li></ul>
+        </div>
+      </article>
+    </div>
+    <p class="range rv">✦ この2つは一例です。ポップで元気なMVから、しっとり落ち着いたMVまで、曲の雰囲気やご希望に合わせて幅広くおつくりします。「こんな感じにしたい」も、お気軽にご相談ください。</p>
+    <p class="note rv">※「うごく見本」はこのページ用に作ったイメージです。表示している言葉はサンプルです。</p>
+  </div>
+</section>
+
+<!-- ============ 作例 ============ -->
+<section class="works" id="works">
+  <div class="inner">
+    <div class="sec-h rv"><span class="en" data-split>WORKS</span><span class="jp">作例<span class="kari">準備中</span></span></div>
+    <!-- ★作例ができたら、.thumb の中を YouTube の埋め込みやサムネ画像に差し替える -->
+    <div class="carousel rv">
+      <div class="track" id="track" tabindex="0" aria-label="作例の一覧（横にスクロールできます）">
+        <!-- ★作例を足すときは、この <a class="work"> を1つコピーして増やす -->
+        <a class="work" href="#works"><div class="thumb t1">SAMPLE 01</div><p>ポップ系／ショート<span class="kari">準備中</span></p></a>
+        <a class="work" href="#works"><div class="thumb t2">SAMPLE 02</div><p>しっとり系／ワンコーラス<span class="kari">準備中</span></p></a>
+        <a class="work" href="#works"><div class="thumb t3">SAMPLE 03</div><p>元気系／フル<span class="kari">準備中</span></p></a>
+        <a class="work" href="#works"><div class="thumb t4">SAMPLE 04</div><p>幻想系／ショート<span class="kari">準備中</span></p></a>
+        <a class="work more" href="portfolio.html"><div class="thumb">もっと見る →</div><p>ポートフォリオで実績をまとめて見る</p></a>
+      </div>
+      <div class="c-ctrl">
+        <button class="c-btn" id="cPrev" type="button" aria-label="前の作例">←</button>
+        <div class="c-dots" id="cDots" aria-hidden="true"></div>
+        <button class="c-btn" id="cNext" type="button" aria-label="次の作例">→</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 料金 ============ -->
+<!-- ★料金を変えるときは、このブロックの数字を書き換える -->
+<section id="price">
+  <div class="inner">
+    <div class="sec-h rv"><span class="en" data-split>PRICE</span><span class="jp">料金（税込）</span></div>
+
+    <!-- ★キャンペーンが終わったら、この div ごと消して、下の <s>〜</s> と camp-mini と now-p の部分を消す -->
+    <div class="camp rv" id="campaign">
+      <span class="camp-shine" aria-hidden="true"></span>
+      <span class="spark s1" aria-hidden="true">✦</span><span class="spark s2" aria-hidden="true">✦</span><span class="spark s3" aria-hidden="true">✦</span>
+      <span class="camp-tag">CAMPAIGN</span>
+      <div class="camp-top">
+        <h3 class="camp-title">実績づくり<br class="sp">キャンペーン</h3>
+        <p class="camp-badge"><span>先着<span id="campTotal2">3</span>名<br><b id="campLeft2">残り2名</b></span></p>
+      </div>
+      <p class="camp-lead">動画依頼のスタートにあわせて、すべてのプランを特別価格でお受けします。</p>
+      <ul class="camp-prices">
+        <li><span class="cp-name">ショート</span><s>¥7,000</s><span class="cp-arw">→</span><b>¥3,000</b></li>
+        <li><span class="cp-name">ワンコーラス</span><s>¥10,000</s><span class="cp-arw">→</span><b>¥5,000</b></li>
+        <li><span class="cp-name">フル</span><s>¥15,000</s><span class="cp-arw">→</span><b>¥12,000</b></li>
+      </ul>
+      <div class="camp-ask">
+        <span class="ask-ic" aria-hidden="true">♡</span>
+        <p><b>キャンペーンの条件はひとつだけ</b>完成した動画を、作例としてサイトやXで紹介させてください。</p>
+      </div>
+      <p class="camp-period">受付期間：〜2026年12月31日／定員になりしだい終了</p>
+    </div>
+
+    <div class="pgrid">
+      <div class="plan rv">
+        <h3>ショート</h3><p class="len">〜60秒（縦型OK）</p>
+        <span class="camp-mini">キャンペーン価格</span>
+        <p class="yen"><s>¥7,000</s><span class="now-p">¥3,000</span></p>
+        <ul><li>納期：約1週間〜</li><li>修正：2回まで</li><li>歌詞テロップ込み</li></ul>
+      </div>
+      <div class="plan pick rv" style="--d:100ms">
+        <span class="pop">おすすめ</span>
+        <h3>ワンコーラス</h3><p class="len">〜1分30秒</p>
+        <span class="camp-mini">キャンペーン価格</span>
+        <p class="yen"><s>¥10,000</s><span class="now-p">¥5,000</span></p>
+        <ul><li>納期：約2週間〜</li><li>修正：2回まで</li><li>歌詞テロップ込み</li></ul>
+      </div>
+      <div class="plan rv" style="--d:200ms">
+        <h3>フル</h3><p class="len">1曲まるごと</p>
+        <span class="camp-mini">キャンペーン価格</span>
+        <p class="yen"><s>¥15,000</s><span class="now-p">¥12,000</span></p>
+        <ul><li>納期：約3〜4週間</li><li>修正：2回まで</li><li>歌詞テロップ込み</li></ul>
+      </div>
+    </div>
+    <div class="opt rv">
+      <h3>オプション</h3>
+      <dl>
+        <dt>イラスト制作</dt><dd>準備中</dd>
+        <dt>髪ゆれ・まばたきなどの動き</dt><dd>＋¥3,000</dd>
+        <dt>お急ぎ対応（納期を半分に）</dt><dd>＋30%</dd>
+        <dt>3回目以降の修正</dt><dd>1回 ¥1,000</dd>
+      </dl>
+    </div>
+    <p class="note rv">イラスト・素材はご依頼者さまにご用意いただきます（イラスト制作は現在準備中です）。長い曲（5分以上）や特別な演出は、お見積もりします。</p>
+  </div>
+</section>
+
+<!-- ============ 準備中のメニュー ============ -->
+<section class="soon-sec" id="soon">
+  <div class="inner">
+    <div class="sec-h rv"><span class="en" data-split>SOON</span><span class="jp">準備中のメニュー</span></div>
+    <div class="soon-grid">
+      <div class="soon rv">
+        <span class="stamp">COMING SOON</span>
+        <svg class="cube" viewBox="0 0 100 100" aria-hidden="true"><path d="M50 6 92 28v44L50 94 8 72V28Z" fill="#C4F3FF" stroke="#0B1A3A" stroke-width="4" stroke-linejoin="round"/><path d="M8 28l42 22 42-22M50 50v44" fill="none" stroke="#0B1A3A" stroke-width="4" stroke-linejoin="round"/></svg>
+        <h3>3D素材を使った高品質MV</h3>
+        <p>MVに使う素材を3Dモデルで作成し、奥行きと立体感のある、より高品質なMVをお届けできるよう準備を進めています。</p>
+      </div>
+      <div class="soon rv" style="--d:100ms">
+        <span class="stamp">COMING SOON</span>
+        <h3>イラスト制作</h3>
+        <p>MVに使うイラストの制作も、受付できるように準備中です。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ MIX・おまかせパック ============ -->
+<section class="mixpack" id="mix">
+  <div class="inner">
+    <div class="mixbox rv">
+      <p class="big">MIX依頼も<br><em>受付中！</em></p>
+      <p>歌ってみたのMIXもお受けしています。<br>MIXと動画をまとめた<b>「おまかせパック」</b>もご用意します。セットでのご依頼は、内容に合わせてお見積もりしますので、お気軽にご相談ください。</p>
+      <div class="pack" aria-label="MIXと動画のおまかせパック"><span>MIX</span><i>＋</i><span class="v">MV</span><i>＝</i><span>おまかせパック</span></div>
+      <div class="btns">
+        <a class="btn" href="#contact">パックの見積もりを相談 <span class="arw">→</span></a>
+        <!-- ★MIX依頼ページのファイル名に合わせる -->
+        <a class="btn sub" href="mix.html">MIX依頼ページへ</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 流れ ============ -->
+<section class="flow" id="flow">
+  <div class="inner">
+    <div class="sec-h rv"><span class="en" data-split>FLOW</span><span class="jp">ご依頼の流れ</span></div>
+    <ol class="steps" id="steps">
+      <li class="step rv"><span class="n">1</span><div class="box"><h3>XのDMで相談</h3><p>曲・長さ・希望の雰囲気・納期を教えてください。下のテンプレが使えます。</p></div></li>
+      <li class="step rv"><span class="n">2</span><div class="box"><h3>お見積もり・内容の確定</h3><p>料金と納期、修正回数をお伝えします。ここまでは無料です。</p></div></li>
+      <li class="step rv"><span class="n">3</span><div class="box"><h3>お支払い</h3><p>着手前にお願いします。<br><span class="pay">銀行振込</span><span class="pay">PayPay</span></p></div></li>
+      <li class="step rv"><span class="n">4</span><div class="box"><h3>制作・ラフの確認</h3><p>途中でラフをお見せします。方向が合っているか、ここで確認します。</p></div></li>
+      <li class="step rv"><span class="n">5</span><div class="box"><h3>修正・納品</h3><p>修正をへて、動画ファイル（MP4）でお渡しします。</p></div></li>
+    </ol>
+  </div>
+</section>
+
+<!-- ============ 注意事項 ============ -->
+<section class="rules" id="rules">
+  <div class="inner">
+    <div class="sec-h rv"><span class="en" data-split>RULES</span><span class="jp">お願いと約束</span></div>
+    <ul>
+      <li class="rv"><b>楽曲・オケの許可</b>原曲やオケ（カラオケ音源）の利用ルールは、ご依頼者さまでご確認ください。</li>
+      <li class="rv"><b>イラスト・素材</b>お持ち込みの素材は、動画に使ってよいもの（作者の許可があるもの）をご用意ください。</li>
+      <li class="rv"><b>修正</b>無料の修正は2回まで。大きな方向転換や3回目以降の修正は追加料金になります。</li>
+      <li class="rv"><b>権利と公開</b>映像の著作権は水瀬みつきに残ります。ご依頼者さまは投稿・宣伝に自由にお使いいただけます。制作実績として紹介させていただくことがあります（非公開の希望はご相談ください）。</li>
+      <li class="rv"><b>AIツールを活用しています</b>新しいAIツールを積極的に取り入れ、制作を効率化しています。そのぶん、質の高い作品をよりお手頃な価格でお届けできます。いただいたキャラクターイラストは大切にそのまま使い、AIで描きかえることはありません。</li>
+      <li class="rv"><b>キャンセル</b>制作を始めたあとのキャンセルは、返金できない場合があります。</li>
+    </ul>
+  </div>
+</section>
+
+<!-- ============ よびかけ ============ -->
+<section class="cta" id="contact">
+  <span class="ring"></span><span class="ring"></span><span class="ring"></span>
+  <div class="inner">
+    <h2 class="rv">まずは<em>気軽</em>に、<br>Xでどうぞ。</h2>
+    <p class="rv">「まだ曲が決まっていない」「予算だけ聞きたい」でも大丈夫です。</p>
+    <div class="btns rv">
+            <a class="btn" href="https://x.com/minasemitsuki" target="_blank" rel="noopener">XのDMで相談する <span class="arw">→</span></a>
+      <button class="btn lime" id="copy" type="button">相談テンプレをコピー</button>
+    </div>
+    <div><span id="copied" role="status"></span></div>
+    <pre class="tpl rv" id="tpl">【MV制作のご相談】
+・曲名／原曲のURL：
+・ご依頼内容：MV／MIX／おまかせパック
+・雰囲気：ポップ／落ち着いた／おまかせ
+・長さ：ショート／ワンコーラス／フル
+・希望の納期：
+・イラストや素材：あり／なし
+・ご予算：</pre>
+  </div>
+</section>
+</main>
+
+<footer>
+  <nav aria-label="フッター"><a href="movie.html">動画依頼</a><a href="mix.html">MIX依頼</a><a href="portfolio.html">ポートフォリオ</a></nav>
+  <p style="margin-top:8px">© 水瀬みつき</p>
+</footer>
+
+<button id="motion" type="button" aria-pressed="false">動きを止める</button>
+
+<script>
+(function(){
+  /* ================================================================
+     ★受付状況の設定：ここだけ書き換えればページ全体に反映されます
+     ================================================================ */
+  var STATUS = {
+    open: true,                 // 受付を止めるときは false
+    // 制作枠：1つの枠に1つ。"making"=制作中 / "reserved"=予約済み / "free"=空き
+    slots: ["free", "free", "free"],
+    startFrom: "12月上旬",       // いま頼んだ場合の制作スタート時期
+    campaignTotal: 3,           // キャンペーンの人数
+    campaignUsed: 0,            // キャンペーンで受けた人数
+    leadShort: "約1週間",
+    leadOne:   "約2週間",
+    leadFull:  "約3〜4週間",
+    note: "※お届けの日数は、音源・イラストなどの素材がそろってから数えます。",
+    updated: "2026/11/24"
+  };
+
+  (function applyStatus(){
+    var free=STATUS.slots.filter(function(x){return x==='free';}).length;
+    var state=!STATUS.open||free===0?'full':(free===1?'few':'open');
+    var T={
+      open:{mark:'◎',word:'受付中',hero:'MV制作 ご依頼受付中',chip:'受付中',line:'あと'+free+'枠あいています。いまのご依頼は'+STATUS.startFrom+'に制作スタート！'},
+      few: {mark:'△',word:'残り1枠',hero:'MV制作 残り1枠',chip:'残り1枠',line:'あと1枠です。いまのご依頼は'+STATUS.startFrom+'に制作スタート。'},
+      full:{mark:'×',word:'受付停止中',hero:'MV制作 いまは受付停止中',chip:'停止中',line:'ただいま満枠です。次の受付開始はXでお知らせします。'}
+    }[state];
+    document.querySelector('.status').dataset.state=state;
+    document.getElementById('heroStatus').textContent=T.hero;
+    document.getElementById('hchip').dataset.state=state;
+    document.getElementById('hchipText').textContent=T.chip;
+    document.querySelector('.nowbox').dataset.state=state;
+    document.getElementById('stMark').textContent=T.mark;
+    document.getElementById('stLabel').textContent=T.word;
+    document.getElementById('stLine').textContent=T.line;
+    var names={making:['✎','制作中','進行中のご依頼'],reserved:['⏳','予約済み','素材まち'],free:['＋','空き','ご依頼OK']};
+    var ol=document.getElementById('stSlots');
+    STATUS.slots.forEach(function(k,i){
+      var n=names[k]||names.free, li=document.createElement('li'); li.className=k;
+      li.innerHTML='<span class="ic" aria-hidden="true">'+n[0]+'</span>枠'+(i+1)+'：'+n[1]+'<small>'+n[2]+'</small>';
+      ol.appendChild(li);
+    });
+    var left=Math.max(0,STATUS.campaignTotal-STATUS.campaignUsed);
+    document.getElementById('stCampLeft').textContent=left>0?'残り'+left+'名':'終了';
+    document.getElementById('campLeft2').textContent=left>0?'残り'+left+'名':'終了';
+    document.getElementById('campTotal2').textContent=STATUS.campaignTotal;
+    document.getElementById('stCampTotal').textContent=left>0?'／先着'+STATUS.campaignTotal+'名':'';
+    var cd=document.getElementById('stCampDots');
+    for(var i=0;i<STATUS.campaignTotal;i++){ var d=document.createElement('i'); if(i<STATUS.campaignUsed) d.className='gone'; cd.appendChild(d); }
+    document.getElementById('ltShort').textContent=STATUS.leadShort;
+    document.getElementById('ltOne').textContent=STATUS.leadOne;
+    document.getElementById('ltFull').textContent=STATUS.leadFull;
+    document.getElementById('stNote').textContent=STATUS.note;
+    document.getElementById('stUpdated').textContent=STATUS.updated;
+  })();
+
+  var root=document.documentElement;
+  var reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var still=reduce;                      // true のあいだは動きを止める
+  if(still) root.classList.add('still');
+
+  /* 1. 文字を1文字ずつに分ける（跳ねて出てくる動き用） */
+  document.querySelectorAll('[data-split]').forEach(function(el){
+    var t=el.textContent; el.textContent='';
+    Array.from(t).forEach(function(c,i){
+      var s=document.createElement('span'); s.className='ch'; s.style.setProperty('--i',i); s.textContent=c; el.appendChild(s);
+    });
+  });
+
+  /* 2. スクロールで見えたら、ふわっと出す */
+  document.querySelectorAll('.rv').forEach(function(el){
+    if(el.style.getPropertyValue('--d')) return;
+    var sib=Array.prototype.filter.call(el.parentNode.children,function(c){return c.classList.contains('rv');});
+    el.style.setProperty('--d',(sib.indexOf(el)*110)+'ms');
+  });
+  var io=new IntersectionObserver(function(es){
+    es.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('on'); io.unobserve(e.target);} });
+  },{threshold:.15});
+  document.querySelectorAll('.rv,.step').forEach(function(el){ io.observe(el); });
+
+  /* 3. スクロール量に合わせて：進みバー・かざりのズレ・流れの線 */
+  var bar=document.getElementById('bar'), decos=document.querySelectorAll('[data-para]'), steps=document.getElementById('steps'), tick=false;
+  function onScroll(){
+    if(tick) return; tick=true;
+    requestAnimationFrame(function(){
+      tick=false;
+      var y=window.scrollY, max=document.documentElement.scrollHeight-window.innerHeight;
+      bar.style.transform='scaleX('+(max>0?y/max:0)+')';
+      if(!still) decos.forEach(function(d){ d.style.transform='translateY('+(y*parseFloat(d.dataset.para)*-1)+'px) rotate('+(y*.05)+'deg)'; });
+      var r=steps.getBoundingClientRect();
+      var p=(window.innerHeight*.7-r.top)/r.height;
+      steps.style.setProperty('--p',Math.max(0,Math.min(1,p)));
+    });
+  }
+  window.addEventListener('scroll',onScroll,{passive:true}); onScroll();
+
+  /* 4. グラフィックMVの見本：言葉が切り替わる（言葉はサンプル） */
+  var words=['きらめく','夜を','こえて','うたえ!'], kw=document.getElementById('kword'), ki=0;
+  function showWord(){
+    kw.className='k'+(ki%4); kw.textContent='';
+    Array.from(words[ki%words.length]).forEach(function(c,i){
+      var s=document.createElement('span'); s.style.setProperty('--i',i); s.textContent=c; kw.appendChild(s);
+    });
+    ki++;
+  }
+  showWord();
+  setInterval(function(){ if(!still) showWord(); },1100);
+
+  /* 5. シネマティックMVの見本：光の粒 */
+  var cv=document.getElementById('bokeh'), cx=cv.getContext('2d'), dots=[], seen=false;
+  var cols=['25,227,255','232,96,159','255,170,215','255,255,255'];
+  function size(){ var r=cv.getBoundingClientRect(); cv.width=r.width; cv.height=r.height; }
+  size(); window.addEventListener('resize',size);
+  for(var i=0;i<34;i++) dots.push({x:Math.random(),y:Math.random(),r:4+Math.random()*22,v:.0006+Math.random()*.0014,c:cols[i%4],a:.12+Math.random()*.3,ph:Math.random()*6});
+  new IntersectionObserver(function(es){ seen=es[0].isIntersecting; }).observe(cv);
+  function draw(t){
+    if(seen && !still){
+      cx.clearRect(0,0,cv.width,cv.height);
+      cx.globalCompositeOperation='lighter';
+      dots.forEach(function(d){
+        d.y-=d.v; if(d.y<-.1){ d.y=1.1; d.x=Math.random(); }
+        var x=(d.x+Math.sin(t/1800+d.ph)*.02)*cv.width, y=d.y*cv.height;
+        var g=cx.createRadialGradient(x,y,0,x,y,d.r);
+        g.addColorStop(0,'rgba('+d.c+','+d.a+')'); g.addColorStop(1,'rgba('+d.c+',0)');
+        cx.fillStyle=g; cx.beginPath(); cx.arc(x,y,d.r,0,6.3); cx.fill();
+      });
+    }
+    requestAnimationFrame(draw);
+  }
+  // 最初の1枚だけは、動きを止めていても描く
+  (function first(){ var s=still,v=seen; still=false; seen=true; draw(0); still=s; seen=v; })();
+
+  /* 6. 動きを止める／動かすボタン */
+  var mb=document.getElementById('motion');
+  function label(){ mb.textContent=still?'動かす':'動きを止める'; mb.setAttribute('aria-pressed',String(still)); }
+  label();
+  mb.addEventListener('click',function(){ still=!still; root.classList.toggle('still',still); label(); });
+
+
+  /* 8. ハンバーガーメニュー */
+  var burger=document.getElementById('burger'), menu=document.getElementById('menu');
+  menu.querySelectorAll('.menu-list li').forEach(function(li,i){ li.style.setProperty('--i',i); });
+  function openMenu(){ menu.hidden=false; burger.setAttribute('aria-expanded','true'); burger.setAttribute('aria-label','メニューを閉じる'); document.body.style.overflow='hidden';
+    // いま見ている場所に色をつける
+    var cur=''; document.querySelectorAll('section[id]').forEach(function(sec){ if(sec.getBoundingClientRect().top<120) cur=sec.id; });
+    menu.querySelectorAll('.menu-list a').forEach(function(a){ a.classList.toggle('here',a.getAttribute('href')==='#'+cur); });
+    menu.querySelector('.menu-list a').focus(); }
+  function closeMenu(){ menu.hidden=true; burger.setAttribute('aria-expanded','false'); burger.setAttribute('aria-label','メニューを開く'); document.body.style.overflow=''; }
+  burger.addEventListener('click',function(){ menu.hidden?openMenu():closeMenu(); });
+  menu.addEventListener('click',function(e){ if(e.target.closest('a')||e.target.hasAttribute('data-close')) closeMenu(); });
+  document.addEventListener('keydown',function(e){ if(e.key==='Escape'&&!menu.hidden){ closeMenu(); burger.focus(); } });
+
+  /* 9. WORKSのカルーセル */
+  var track=document.getElementById('track'), items=track.querySelectorAll('.work'), dots=document.getElementById('cDots'),
+      prev=document.getElementById('cPrev'), next=document.getElementById('cNext');
+  items.forEach(function(){ dots.appendChild(document.createElement('i')); });
+  function step(){ return items[0].getBoundingClientRect().width+16; }
+  function sync(){
+    var idx=Math.round(track.scrollLeft/step());
+    dots.querySelectorAll('i').forEach(function(d,i){ d.classList.toggle('on',i===idx); });
+    prev.disabled=track.scrollLeft<4;
+    next.disabled=track.scrollLeft+track.clientWidth>=track.scrollWidth-4;
+  }
+  prev.addEventListener('click',function(){ track.scrollBy({left:-step()}); });
+  next.addEventListener('click',function(){ track.scrollBy({left:step()}); });
+  track.addEventListener('scroll',function(){ requestAnimationFrame(sync); },{passive:true});
+  window.addEventListener('resize',sync); sync();
+
+  /* 7. 相談テンプレをコピー */
+  var out=document.getElementById('copied');
+  document.getElementById('copy').addEventListener('click',function(){
+    var text=document.getElementById('tpl').textContent;
+    function ok(){ out.textContent='コピーしました！XのDMに貼ってください'; }
+    function ng(){ out.textContent='コピーできませんでした。下の文を長押しでコピーしてください'; }
+    try{ navigator.clipboard.writeText(text).then(ok,ng); }catch(e){ ng(); }
+  });
+})();
+</script>
+</body>
+</html>

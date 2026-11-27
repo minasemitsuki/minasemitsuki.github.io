@@ -242,6 +242,7 @@ section{padding:72px 0;position:relative}
 .t2{background-image:linear-gradient(120deg,#0B1A3A,#2E7FC9,var(--cyan));color:var(--white)}
 .t3{background-image:linear-gradient(120deg,var(--g3),#fff,var(--g1))}
 .t4{background-image:linear-gradient(120deg,#12357E,#7AD3FF,#FF9AD1);color:var(--white)}
+.wthumb.has-img{background-size:cover;background-position:center;animation:none;color:transparent}
 .wthumb .mini{position:absolute;left:10px;bottom:-30%;width:38%;aspect-ratio:1;border-radius:50%;background:repeating-radial-gradient(circle,#1a2a52 0 2px,#0B1A3A 2px 4px);border:2px solid var(--ink);transition:transform .5s cubic-bezier(.2,1.4,.4,1);transform:translateY(40%)}
 .wthumb .mini::after{content:"";position:absolute;inset:34%;border-radius:50%;background:var(--grad)}
 .wcard:hover .mini,.wcard.now .mini{transform:translateY(0);animation:spin 3s linear infinite}
@@ -428,7 +429,7 @@ html.still .tab-ink{transition:none}
       </div>
     </div>
     <!-- ★作品を投稿したら、ページ下の WORKS の設定にYouTubeのURLを入れると、ここで再生できます -->
-    <p class="note rv">※作品は準備中です。公開した作品から、順番にここで再生できるようになります。</p>
+    <p class="note rv">※「準備中」の作品は、公開したものから順番にここで再生できるようになります。</p>
   </div>
 </section>
 
@@ -533,12 +534,12 @@ html.still .tab-ink{transition:none}
      lyric : プレイヤーに流れる言葉（歌詞の一部や、ひとこと）
      ================================================================ */
   var WORKS = [
-    {type:"cover", owner:"self",   title:"SAMPLE SONG 01", sub:"歌ってみた／フル",               url:"", color:"t1", dummy:true, lyric:["きらめく","夜を","こえて","うたえ！"]},
+    {type:"cover", owner:"self",   title:"太陽系デスコ",   sub:"歌ってみた／フル（原曲：ナユタン星人）", url:"https://youtu.be/KGCqZEug9_E", color:"t1", lyric:["太陽系","デスコ","✦","おどろう！"]},
     {type:"cover", owner:"self",   title:"SAMPLE SONG 02", sub:"歌ってみた／ワンコーラス",       url:"", color:"t3", dummy:true, lyric:["ひかりの","なかで","きみを","よんだ"]},
     {type:"cover", owner:"self",   title:"SAMPLE SONG 03", sub:"歌ってみた／ショート",           url:"", color:"t2", dummy:true, lyric:["ねえ","きこえる？","このこえ"]},
-    {type:"mv",    owner:"self",   title:"SAMPLE MV 01",   sub:"MV（ポップ系）／自分の歌ってみた", url:"", color:"t4", dummy:true, lyric:["文字が","おどる","リズムに","のって"]},
+    {type:"mv",    owner:"self",   title:"太陽系デスコ",   sub:"MV（ポップ系）／自分の歌ってみた", url:"https://youtu.be/KGCqZEug9_E", color:"t4", lyric:["文字が","おどる","リズムに","のって"]},
     {type:"mv",    owner:"self",   title:"SAMPLE MV 02",   sub:"MV（しっとり系）／自分の歌ってみた", url:"", color:"t2", dummy:true, lyric:["夜明けまで","しずかに","ひかる"]},
-    {type:"mix",   owner:"self",   title:"SAMPLE MIX 01",  sub:"MIX／自分の歌ってみた",           url:"", color:"t1", dummy:true, lyric:["BEFORE","→","AFTER","♪"]},
+    {type:"mix",   owner:"self",   title:"太陽系デスコ",   sub:"MIX／自分の歌ってみた",           url:"https://youtu.be/KGCqZEug9_E", color:"t1", lyric:["ピッチ補正","→","MIX","♪"]},
     {type:"mv",    owner:"client", title:"CLIENT MV 01",   sub:"MV（元気系）／ショート",         url:"", color:"t3", dummy:true, lyric:["ご依頼","ありがとう","ございました"]},
     {type:"mix",   owner:"client", title:"CLIENT MIX 01",  sub:"MIX／フル・ハモリあり",            url:"", color:"t4", dummy:true, lyric:["声と","オケが","ひとつに"]}
   ];
@@ -642,6 +643,7 @@ html.still .tab-ink{transition:none}
     var b=document.createElement('button'); b.type='button'; b.className='wcard'; b.dataset.idx=idx;
     b.style.setProperty('--i',n); b.style.setProperty('--r',(n%2?8:-8));
     b.innerHTML='<div class="wthumb '+w.color+'"><span class="mini"></span>'+w.title+'<span class="pl">▶</span></div><div class="wmeta"><b></b><span></span></div>';
+    var tid=ytId(w.url); if(tid){ var th=b.querySelector('.wthumb'); th.classList.add('has-img'); th.style.backgroundImage='url(https://i.ytimg.com/vi/'+tid+'/hqdefault.jpg),linear-gradient(120deg,#2ED8FF,#8FA8FF,#FF6FB5)'; }
     b.querySelector('b').textContent=w.title; b.querySelector('.wmeta span').textContent=w.sub+(w.dummy?'（準備中）':'');
     b.setAttribute('aria-label',w.title+'を再生');
     b.addEventListener('click',function(){ load(idx,true); document.getElementById('player').scrollIntoView({behavior:still?'auto':'smooth'}); });

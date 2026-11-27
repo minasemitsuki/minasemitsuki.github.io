@@ -200,6 +200,7 @@ section{padding:72px 0;position:relative}
 .wavebox i{flex:1;height:var(--h);background:var(--grad);background-size:2000% 100%;background-position:calc(var(--n)*3.3%) 0;border-radius:3px;transform-origin:center;transform:scaleY(.35);transition:transform .4s}
 .player.playing .wavebox i{animation:eq .8s ease-in-out infinite;animation-delay:calc(var(--n)*-47ms)}
 .lyric{height:46px;display:grid;place-items:center start;font-family:var(--mincho);font-size:clamp(18px,3.6vw,24px);letter-spacing:.2em;overflow:hidden;border-block:2px dashed rgba(11,26,58,.2)}
+.lyric[hidden]{display:none}
 .lyric span{display:inline-block;animation:lyr .6s cubic-bezier(.2,1.5,.4,1) both}
 @keyframes lyr{from{opacity:0;transform:translateY(100%);filter:blur(4px)}}
 .prog{position:relative;height:8px;border:2px solid var(--ink);border-radius:9px;background:var(--sky2);overflow:hidden;margin-top:14px}
@@ -534,12 +535,12 @@ html.still .tab-ink{transition:none}
      lyric : プレイヤーに流れる言葉（歌詞の一部や、ひとこと）
      ================================================================ */
   var WORKS = [
-    {type:"cover", owner:"self",   title:"太陽系デスコ",   sub:"歌ってみた／フル（原曲：ナユタン星人）", url:"https://youtu.be/KGCqZEug9_E", color:"t1", lyric:["太陽系","デスコ","✦","おどろう！"]},
+    {type:"cover", owner:"self",   title:"太陽系デスコ",   sub:"歌ってみた／フル（原曲：ナユタン星人）", url:"https://youtu.be/KGCqZEug9_E", color:"t1", lyric:[]},
     {type:"cover", owner:"self",   title:"SAMPLE SONG 02", sub:"歌ってみた／ワンコーラス",       url:"", color:"t3", dummy:true, lyric:["ひかりの","なかで","きみを","よんだ"]},
     {type:"cover", owner:"self",   title:"SAMPLE SONG 03", sub:"歌ってみた／ショート",           url:"", color:"t2", dummy:true, lyric:["ねえ","きこえる？","このこえ"]},
-    {type:"mv",    owner:"self",   title:"太陽系デスコ",   sub:"MV（ポップ系）／自分の歌ってみた", url:"https://youtu.be/KGCqZEug9_E", color:"t4", lyric:["文字が","おどる","リズムに","のって"]},
+    {type:"mv",    owner:"self",   title:"太陽系デスコ",   sub:"MV（ポップ系）／自分の歌ってみた", url:"https://youtu.be/KGCqZEug9_E", color:"t4", lyric:[]},
     {type:"mv",    owner:"self",   title:"SAMPLE MV 02",   sub:"MV（しっとり系）／自分の歌ってみた", url:"", color:"t2", dummy:true, lyric:["夜明けまで","しずかに","ひかる"]},
-    {type:"mix",   owner:"self",   title:"太陽系デスコ",   sub:"MIX／自分の歌ってみた",           url:"https://youtu.be/KGCqZEug9_E", color:"t1", lyric:["ピッチ補正","→","MIX","♪"]},
+    {type:"mix",   owner:"self",   title:"太陽系デスコ",   sub:"MIX／自分の歌ってみた",           url:"https://youtu.be/KGCqZEug9_E", color:"t1", lyric:[]},
     {type:"mv",    owner:"client", title:"CLIENT MV 01",   sub:"MV（元気系）／ショート",         url:"", color:"t3", dummy:true, lyric:["ご依頼","ありがとう","ございました"]},
     {type:"mix",   owner:"client", title:"CLIENT MIX 01",  sub:"MIX／フル・ハモリあり",            url:"", color:"t4", dummy:true, lyric:["声と","オケが","ひとつに"]}
   ];
@@ -600,7 +601,8 @@ html.still .tab-ink{transition:none}
   function ytId(u){ var m=(u||'').match(/(?:v=|youtu\.be\/|shorts\/|embed\/)([\w-]{11})/); return m?m[1]:''; }
   function showLyric(){
     var w=list[cur]; if(!w) return;
-    var words=w.lyric&&w.lyric.length?w.lyric:['♪'];
+    lyric.hidden=!(w.lyric&&w.lyric.length); if(lyric.hidden) return;
+    var words=w.lyric;
     lyric.innerHTML=''; var s=document.createElement('span'); s.textContent=words[li%words.length]; lyric.appendChild(s); li++;
   }
   function setPlaying(on){
